@@ -30,19 +30,28 @@ router.get("/countries",async (req,res)=>{
 
         try {
             const countries = await axios.get('https://restcountries.com/v3/all');
-            await Country.bulkCreate(countries.data.map(c=>{
-            return{
-                id:c.cca3,
-                name:c.name.common,
-                image:c.flags[0],
-                region:c.region,
-                capital:c.capital?c.capital[0]:"No tiene capital",
-                subregion:c.subregion,
-                area:c.area,
-                population:c.population
+           
+            if(!await Country.findOne({})){
+
+                await Country.bulkCreate(countries.data.map(c=>{
+                    return{
+                        id:c.cca3,
+                        key:c.cca3,
+                        name:c.name.common,
+                        image:c.flags[0],
+                        region:c.region,
+                        capital:c.capital?c.capital[0]:"No tiene capital",
+                        subregion:c.subregion,
+                        area:c.area,
+                        population:c.population
+                    }
+                }))
             }
-        }))
+            
             res.json(await Country.findAll())
+            
+            
+        
         } catch (error) {
             console.error(error);
         }    

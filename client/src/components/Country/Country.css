@@ -1,0 +1,14 @@
+.countryCard{
+    
+    height: 300px;
+    object-fit: scale-down;
+    background-color: #222;
+    color:white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 5px 5px 20px rgba(0,0,0,.6);
+}
+.countryCard img{
+    width: 100%;
+    height: 70%;
+}
