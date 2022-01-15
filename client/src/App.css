@@ -34,18 +34,46 @@
   animation: appear 1s ease-in forwards;
   animation-delay: 1s;
   opacity:0;
+  position: relative;
 }
 .homeIco:hover{
   transform: scale(1.2);
   transition:all 300ms ease-in-out;
 }
-.homeIco::after{
-  content:"";
-  width: 50px;
-  background-color: red;
+.title-cont{
+  position:relative;
+  overflow: hidden;
+
+}
+.title{
+  position: relative;
+}
+.title::after{
+  position: absolute;
+  top:200px;
+  transform-origin: 'bottom';
+  content:"Home.";
+  left: 0;
+  width: 4rem;
   aspect-ratio: 1/1;
 }
+.change{
+  animation: change 300ms ease forwards;
+}
 
+.leave{
+  animation: change 300ms ease reverse;
+  
+}
+
+@keyframes change {
+  from{
+    transform:translateY(0)
+  }
+  to{
+    transform: translateY(-200px);
+  }
+}
 
 
 @keyframes floatUp {

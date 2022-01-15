@@ -1,0 +1,13 @@
+.dropMenu{
+    position: absolute;
+    background-color: rgba(0,0,0,.8);
+    backdrop-filter: blur(10px);
+    width: 100vw;
+    top:0;
+    left:0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

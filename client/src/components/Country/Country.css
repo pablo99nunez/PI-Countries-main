@@ -1,7 +1,7 @@
 .countryCard{
     
     height: 300px;
-    object-fit: scale-down;
+    object-fit: cover;
     background-color: #222;
     color:white;
     border-radius: 20px;

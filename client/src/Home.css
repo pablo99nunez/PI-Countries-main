@@ -4,6 +4,10 @@
     align-items: center;
     
 }
+body{
+    background-image: url('./assets/background.jpg');
+    backdrop-filter: blur(2px);
+}
 .cards{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

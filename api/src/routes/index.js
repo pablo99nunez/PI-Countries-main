@@ -37,7 +37,7 @@ router.get("/countries",async (req,res)=>{
                     return{
                         id:c.cca3,
                         key:c.cca3,
-                        name:c.name.common,
+                        name:c.translations.spa.common,
                         image:c.flags[0],
                         region:c.region,
                         capital:c.capital?c.capital[0]:"No tiene capital",
@@ -66,7 +66,7 @@ router.get("/countries/:idPais",async (req,res)=>{
             method: 'GET',
             url: 'https://api.unsplash.com/search/photos',
             params: {
-                query: `${country.name} tradicional scene`,
+                query: `${country.name}`,
                 page:1,
                 per_page:1,
                 orientation:"landscape"

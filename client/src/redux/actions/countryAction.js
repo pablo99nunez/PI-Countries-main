@@ -1,5 +1,8 @@
 export const GET_COUNTRIES="GET_COUNTRIES"
 export const GET_COUNTRY="GET_COUNTRY"
+export const SEARCH="SEARCH"
+export const FILTER_COUNTRIES="FILTER_COUNTRIES"
+export const ORDER_COUNTRIES="ORDER_COUNTRIES"
 
 
 export function getCountries(){
@@ -16,7 +19,22 @@ export function getCountry(payload){
         }))
     }
 }
+export function search(payload){
+    return function(dispatch){
+        dispatch({type:SEARCH,payload})
+    }
+}
+export function filterCountries(payload){
+    return function(dispatch){
+        dispatch({type:FILTER_COUNTRIES,payload})
+    }
+}
 
+export function orderCountries(payload){
+    return function(dispatch){
+        dispatch({type:ORDER_COUNTRIES,payload})
+    }
+}
 
             
             
