@@ -12,9 +12,21 @@ export default function CountryDetail() {
         dispatch(getCountry(id))
     },[])
     return (
+        <>
         <div className='countryDetail'>
-            <h1>{country.name}</h1>
-            <img src={country.landscape} alt="" />
+            <img className='countryBack' src={country.landscape} alt="" />
+            <div className="info">
+                <img src={country.image} alt="bandera" />
+                <div>
+                    <h1>{country.name}</h1>
+                    <h2>{country.region}</h2>
+                </div>
+            </div>
+
         </div>
+        <div className="detail">
+            <h2>SubRegion: {country.subregion}</h2>
+        </div>
+        </>
     )
 }

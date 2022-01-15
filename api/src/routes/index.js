@@ -80,9 +80,10 @@ router.get("/countries/:idPais",async (req,res)=>{
               country.update({landscape:response.data.results[0].urls.regular})
               console.log(country);
               res.json(country)
-
-          }).catch(function (error) {
-              console.error(error);
+              
+            }).catch(function (error) {
+                console.error(error);
+                res.json(country)
           });
         
     } catch (error) {
