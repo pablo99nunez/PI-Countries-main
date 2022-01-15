@@ -38,5 +38,8 @@ module.exports = (sequelize) => {
     population:{
       type:DataTypes.INTEGER
     },
+    landscape:{
+      type:DataTypes.STRING
+    }
   });
 };

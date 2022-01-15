@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const {conn,Country,Activity} =require("../db")
 const {Op} = require("sequelize")
-const axios=require("axios")
+const axios=require("axios").default
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -29,11 +29,11 @@ router.get("/countries",async (req,res)=>{
     }else{
 
         try {
-            const countries = await axios.get('https://restcountries.com/v3/all');
-           
+            const countries = await axios.get('https://restcountries.com/v3/all').catch(e=>console.log(e));
             if(!await Country.findOne({})){
-
+                
                 await Country.bulkCreate(countries.data.map(c=>{
+                    
                     return{
                         id:c.cca3,
                         key:c.cca3,
@@ -61,7 +61,30 @@ router.get("/countries",async (req,res)=>{
 router.get("/countries/:idPais",async (req,res)=>{
     try {
         const country=await Country.findByPk(req.params.idPais,{include:Activity})
-        res.json(country)
+      
+        var options = {
+            method: 'GET',
+            url: 'https://api.unsplash.com/search/photos',
+            params: {
+                query: `${country.name} tradicional scene`,
+                page:1,
+                per_page:1,
+                orientation:"landscape"
+            },
+            headers: {
+                Authorization: `Client-ID miuUGQ2wK6EKnbR7lk6A98jHf2r-TOyH0WgAwMwD5b0`
+            }
+          };
+          
+          axios.request(options).then(async function (response) {
+              country.update({landscape:response.data.results[0].urls.regular})
+              console.log(country);
+              res.json(country)
+
+          }).catch(function (error) {
+              console.error(error);
+          });
+        
     } catch (error) {
         res.status(404).send(error)
     }

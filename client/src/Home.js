@@ -29,7 +29,7 @@ export default function Home() {
                     return setPage(page-10)
                 }}>Prev</button>
                 {Array.apply(null, { length: Math.floor(countries.length/10) }).map((e, i) => {
-                    return (<button onClick={()=>setPage(i*10)}>
+                    return (<button key="i" onClick={()=>setPage(i*10)}>
                         {i+1}
                     </button>)
                 })}

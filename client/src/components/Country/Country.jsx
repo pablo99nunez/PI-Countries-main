@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import {  useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Loading from '../Loading'
 import './Country.css'
 
@@ -14,7 +15,7 @@ export default function Country({id}) {
         }
     },[countries])
     return (
-        <div className='countryCard'>
+        <Link to={"/"+country.id} className='countryCard'>
             {!loading?
             <>
                 <img src={country.image} alt={`${country.name}Image`}/>
@@ -24,6 +25,6 @@ export default function Country({id}) {
             :
             <Loading></Loading>
             }
-        </div>
+        </Link>
     )
 }

@@ -9,6 +9,8 @@ import {BrowserRouter} from 'react-router-dom'
 
 import App from './App';
 import Home from './Home'
+import CountryDetail from './components/CountryDetail/CountryDetail';
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +19,7 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App/>}/>
           <Route path="/home" element={<Home/>}/>
+          <Route path="/:id" element={<CountryDetail />}/>
            
         </Routes>
       </Provider>
