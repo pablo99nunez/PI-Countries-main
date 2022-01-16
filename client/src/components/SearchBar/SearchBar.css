@@ -20,6 +20,7 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
+    
 }
 .searchBar input{
     height: 70%;
