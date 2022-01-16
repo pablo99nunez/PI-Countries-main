@@ -6,9 +6,18 @@
   box-sizing: border-box;
   text-decoration: none;
 }
+a{
+  color:inherit
+}
 
 body{
   min-height: 100vh;
   overflow-x: hidden;
   font-family: 'Playfair Display',sans-serif;
+}
+input{
+  font-family: 'Playfair Display',sans-serif;
+}
+input:focus{
+  outline: none;
 }

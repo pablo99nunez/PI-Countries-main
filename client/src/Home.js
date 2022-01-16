@@ -6,7 +6,7 @@ import Nav from './components/Nav/Nav'
 import './Home.css'
 import Loading from './components/Loading'
 
-const per_page=5
+const per_page=10
 
 export default function Home() {
     const countries =useSelector(state=>state.countries)
@@ -27,8 +27,9 @@ export default function Home() {
         }
     },[countries])
     return (
+        <>
+        <Nav setPage={setPage}></Nav>
         <div className='home'>
-            <Nav setPage={setPage}></Nav>
             <div className="cards">
 
                 {
@@ -55,11 +56,12 @@ export default function Home() {
                     </button>)
                 })}
                 <button onClick={()=>{
-
+                    
                     return setPage(page+per_page)
-                    }} disabled={page>=(results[0]?results.length-per_page:countries.length-per_page)}>Next</button>
+                }} disabled={page>=(results[0]?results.length-per_page:countries.length-per_page)}>Next</button>
 
             </div>
         </div>
+        </>
     )
 }

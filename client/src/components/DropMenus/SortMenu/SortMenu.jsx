@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import Button from '../../Interactive/Button/Button'
 import {  orderCountries } from '../../../redux/actions/countryAction'
 import '../dropMenu.css'
 
@@ -12,7 +13,7 @@ export default function FilterMenu({close,setPage}) {
     return (
         <div className='dropMenu'>
             <h1>Ordenar</h1>
-            <button onClick={()=>close()}>x</button>
+            <button className="closeButton" onClick={()=>close()}>x</button>
             <div style={{display:"flex"}}>
 
                 <div >
@@ -34,11 +35,13 @@ export default function FilterMenu({close,setPage}) {
             </div>
 
      
-            <button onClick={()=>{
+            <Button
+            value="Ok"
+             onClick={()=>{
                 close()
                 setPage(0)
                 return dispatch(orderCountries(order))
-                }} >Ok</button>
+                }} ></Button>
           
         </div>
     )

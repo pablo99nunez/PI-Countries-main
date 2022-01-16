@@ -19,8 +19,11 @@ export default function Country({id}) {
             {!loading?
             <>
                 <img src={country.image} alt={`${country.name}Image`}/>
-                <h3>{country.name}</h3>
-                <h4>{country.region}</h4>
+                <div className="infoCountryCard">
+ 
+                    <h3>{country.name}</h3>
+                    <h4>{country.region}</h4>
+                </div>
             </>
             :
             <Loading></Loading>

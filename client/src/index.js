@@ -9,6 +9,7 @@ import {BrowserRouter} from 'react-router-dom'
 
 import App from './App';
 import Home from './Home'
+import AddActivity from './components/AddActivity/AddActivity';
 import CountryDetail from './components/CountryDetail/CountryDetail';
 
 
@@ -19,6 +20,7 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App/>}/>
           <Route path="/home" element={<Home/>}/>
+          <Route path="/add" element={<AddActivity/>}/>
           <Route path="/:id" element={<CountryDetail />}/>
            
         </Routes>

@@ -58,6 +58,19 @@ router.get("/countries",async (req,res)=>{
     }
 })
 
+async function getLandscape(options){
+    return axios.request(options).then(async function (response) {
+        if(response.data.results[0]){
+            let data=response.data.results[0].urls.regular 
+            if(data) return data;
+
+        }
+        else return undefined
+      }).catch(function (error) {
+        return error
+    });
+}
+
 router.get("/countries/:idPais",async (req,res)=>{
     try {
         const country=await Country.findByPk(req.params.idPais,{include:Activity})
@@ -76,15 +89,16 @@ router.get("/countries/:idPais",async (req,res)=>{
             }
           };
           
-          axios.request(options).then(async function (response) {
-              country.update({landscape:response.data.results[0].urls.regular})
-              console.log(country);
-              res.json(country)
-              
-            }).catch(function (error) {
-                console.error(error);
-                res.json(country)
-          });
+          let landscape = await getLandscape(options)
+          console.log(landscape)
+          if(!landscape){
+              options.params.query=country.region
+              landscape=await getLandscape(options)
+              console.log(landscape)
+          }
+          country.update({landscape})
+          res.json(country)
+
         
     } catch (error) {
         res.status(404).send(error)
@@ -95,14 +109,19 @@ router.post("/activity",async (req,res)=>{
     try {
         
         const {name,difficulty,duration,season} = req.body;
-        let IDs=req.body.IDs.split(" ")
+        let {IDs}=req.body
+        if(typeof IDs =="string"){
+            let IDs=IDs.split(" ")
+        }
+        const act=await Activity.create({name,difficulty,duration,season}).catch(err=>{throw new Error(err)})
+
         
-        const act=await Activity.create({name,difficulty,duration,season})
-        act.setCountries(IDs).catch(err=>console.log(err))
+        act.setCountries(IDs).catch(err=>{throw new Error(err)})
         console.log(IDs)
         res.status(201).send("Created")
     } catch (error) {
         console.log(error)
+        res.sendStatus(404)
     }
 })
 

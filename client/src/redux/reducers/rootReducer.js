@@ -27,18 +27,20 @@ export default function rootReducer(state=initialState,action){
             }
         }
         case FILTER_COUNTRIES:{
+            let founds=state.results[0]?state.results:state.countries
             return{
                 ...state,
-                results:state.countries.filter(e=>e.region==action.payload)
+                results:founds.filter(e=>e.region==action.payload)
             }
         }
         case ORDER_COUNTRIES:{
             const {alf,pob} = action.payload
+            let founds=state.results[0]?[...state.results]:[...state.countries]
            
 
             return{
                 ...state,
-                results:state.countries.sort((a,b)=>{
+                results:founds.sort((a,b)=>{
                     if(alf){
                         if(a.name<b.name){
                             return alf=="asc"?-1:1

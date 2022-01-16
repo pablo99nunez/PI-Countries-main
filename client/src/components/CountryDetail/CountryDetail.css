@@ -15,7 +15,8 @@
     align-items: center;
     position:absolute;
     height: 40%;
-    
+    font-size: 2em;
+    text-align: right;
     color:white;
     bottom:0;
     padding: 0 3rem ;
@@ -31,4 +32,11 @@
     left: 0;
     background-color: black;
     color:white
+}
+.goBack{
+    position: fixed;
+    display: block;
+    top:0;
+    left:40px;
+    color:white;
 }

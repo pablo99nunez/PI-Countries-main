@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { getCountry } from '../../redux/actions/countryAction'
 import './CountryDetail.css'
+import { Link } from 'react-router-dom'
 
 export default function CountryDetail() {
     let {id}=useParams()
@@ -13,8 +14,10 @@ export default function CountryDetail() {
     },[])
     return (
         <>
+        <Link to="/home" className='goBack'><h1>Patriam.</h1></Link>
         <div className='countryDetail'>
-            <img className='countryBack' src={country.landscape} alt="" />
+            {country.landscape?
+            <img className='countryBack' src={country.landscape} alt="" />:""}
             <div className="info">
                 <img src={country.image} alt="bandera" />
                 <div>

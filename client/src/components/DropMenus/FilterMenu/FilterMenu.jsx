@@ -1,37 +1,39 @@
-import React from 'react'
-import { useState } from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import { filterCountries } from '../../../redux/actions/countryAction'
-import '../dropMenu.css'
+import React from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { filterCountries } from "../../../redux/actions/countryAction";
+import Select from "../../Interactive/Select/Select";
+import Button from "../../Interactive/Button/Button";
+import "../dropMenu.css";
 
-export default function FilterMenu({close,setPage}) {
-    const results = useSelector(state => state.results)
-    const countries = useSelector(state => state.countries)
-    const dispatch = useDispatch()
-    const [continent, setContinent] = useState("Americas")
-    return (
-        <div className='dropMenu'>
-            <h1>filter</h1>
-            <button onClick={()=>close()}>x</button>
-        
+export default function FilterMenu({ close, setPage }) {
+  const results = useSelector((state) => state.results);
+  const countries = useSelector((state) => state.countries);
+  const dispatch = useDispatch();
+  const [continent, setContinent] = useState("Americas");
 
-            <select name="continent" id="" onChange={(e)=>setContinent(e.target.value)}>
-                <option value="Americas" >America</option>
-                <option value="Africa">Africa</option>
-                <option value="Europe">Europa</option>
-                <option value="Asia">Asia</option>
-                <option value="Oceania">Oceanía</option>
-                <option value="Antarctic">Antartida</option>
-            </select>
-            <select name="activities" id="">
-                
-            </select>
-            <button onClick={()=>{
-                close()
-                setPage(0)
-                return dispatch(filterCountries(continent))
-                }} >Ok</button>
-          
-        </div>
-    )
+  return (
+    <div className="dropMenu">
+      <h1>Filtrar</h1>
+      <button className="closeButton" onClick={() => close()}>
+        x
+      </button>
+
+      <h2>Continente:</h2>
+      <Select
+        opt={["Americas", "Africa", "Europe", "Asia", "Oceania", "Antarctic"]}
+        onSelect={setContinent}
+      ></Select>
+
+      <Button
+        value="Ok"
+        onClick={() => {
+          close();
+          setPage(0);
+          console.log(continent);
+          return dispatch(filterCountries(continent));
+        }}
+      ></Button>
+    </div>
+  );
 }
