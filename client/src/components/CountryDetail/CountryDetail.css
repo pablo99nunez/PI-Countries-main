@@ -25,13 +25,16 @@
     width: 100vw;
 }
 .detail{
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     position: absolute;
     top:100vh;
     left: 0;
     background-color: black;
-    color:white
+    color:white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
 }
 .goBack{
     position: fixed;
@@ -39,4 +42,23 @@
     top:0;
     left:40px;
     color:white;
+}
+
+.gridActivities{
+    display: grid;
+    width: 80%;
+    grid-template-columns: repeat(2,1fr);
+    margin:1rem
+}
+.activitiesWrap{
+    grid-column: 2;
+    grid-row: 1/span 2;
+    
+}
+
+.infoDetail, .densityDetail,.activitiesWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

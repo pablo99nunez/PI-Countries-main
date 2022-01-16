@@ -58,7 +58,7 @@ router.get("/countries",async (req,res)=>{
     }
 })
 
-async function getLandscape(options){
+async function postPost(options){
     return axios.request(options).then(async function (response) {
         if(response.data.results[0]){
             let data=response.data.results[0].urls.regular 
@@ -72,6 +72,10 @@ async function getLandscape(options){
 }
 
 router.get("/countries/:idPais",async (req,res)=>{
+    
+    if(!await Country.findByPk("ARG")){
+        await axios.get("http://localhost:3001/countries")
+    }
     try {
         const country=await Country.findByPk(req.params.idPais,{include:Activity})
       
@@ -89,11 +93,11 @@ router.get("/countries/:idPais",async (req,res)=>{
             }
           };
           
-          let landscape = await getLandscape(options)
+          let landscape = await postPost(options)
           console.log(landscape)
           if(!landscape){
               options.params.query=country.region
-              landscape=await getLandscape(options)
+              landscape=await postPost(options)
               console.log(landscape)
           }
           country.update({landscape})
@@ -106,6 +110,8 @@ router.get("/countries/:idPais",async (req,res)=>{
         
 })
 router.post("/activity",async (req,res)=>{
+  
+    
     try {
         
         const {name,difficulty,duration,season} = req.body;
@@ -113,12 +119,26 @@ router.post("/activity",async (req,res)=>{
         if(typeof IDs =="string"){
             let IDs=IDs.split(" ")
         }
-        const act=await Activity.create({name,difficulty,duration,season}).catch(err=>{throw new Error(err)})
-
+        var options = {
+            method: 'GET',
+            url: 'https://api.unsplash.com/search/photos',
+            params: {
+                query: `${name}`,
+                page:1,
+                per_page:1,
+                orientation:"landscape"
+            },
+            headers: {
+                Authorization: `Client-ID miuUGQ2wK6EKnbR7lk6A98jHf2r-TOyH0WgAwMwD5b0`
+            }
+          };
+        let image=await postPost(options).catch(err=>console.error(err))
+        console.log(image)
+        const act=await Activity.create({name,difficulty,duration,season,image}).catch(err=>{throw new Error(err)})
         
         act.setCountries(IDs).catch(err=>{throw new Error(err)})
         console.log(IDs)
-        res.status(201).send("Created")
+        res.status(201).json({name,difficulty,duration,season,image})
     } catch (error) {
         console.log(error)
         res.sendStatus(404)

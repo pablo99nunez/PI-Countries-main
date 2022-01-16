@@ -7,8 +7,8 @@ module.exports = (sequelize) => {
     name:DataTypes.STRING,
     difficulty:DataTypes.ENUM("1","2","3","4","5"),
     duration:DataTypes.INTEGER, //Revisar tipo de dato
-    season:DataTypes.ENUM("Verano","Otoño","Invierno","Primavera")
-
+    season:DataTypes.ENUM("Verano","Otoño","Invierno","Primavera"),
+    image:DataTypes.TEXT
   })
   
 }

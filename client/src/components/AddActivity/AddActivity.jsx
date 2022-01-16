@@ -43,6 +43,13 @@ export default function AddActivity() {
             setErrors({...errors,IDs:"Debes ingresar al menos un pais"})
             throw new Error("Debes ingresar al menos un pais")
         }
+        setInput({
+            name:"",
+            season:"Verano",
+            duration:"",
+            difficulty:"1",
+            IDs:[]
+        })
     }
 
     function validate(){
@@ -105,11 +112,11 @@ export default function AddActivity() {
                     <div className='durationPicker'>
                         <div>
                             <h4>Desde</h4>
-                            <input type="date" name="" id="" onChange={(e)=>setDatei(e.target.valueAsNumber)}/>
+                            <input type="date" name="" id="" onChange={(e)=>setDatei(e.target.valueAsNumber/1000)}/>
                         </div>
                         <div>
                             <h4>Hasta</h4>
-                            <input type="date" name="" id="" onChange={(e)=>setDatef(e.target.valueAsNumber)} onBlur={handleInputChange}/>
+                            <input type="date" name="" id="" onChange={(e)=>setDatef(e.target.valueAsNumber/1000)} onBlur={handleInputChange}/>
                             {errors.duration && (<Error e={errors.duration}></Error>)}
                         </div>
 
