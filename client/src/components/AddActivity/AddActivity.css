@@ -1,0 +1,47 @@
+.activityPage{
+    color:white;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.activityPage .form{
+    background-color: black;
+    border-radius: 5px;
+    min-width: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding:1rem;
+    gap:1rem;
+}
+.activityPage input{
+    border:none;
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    padding-left: 40px;
+    font-size: 1.2em;
+}
+.titlePage{
+    position: absolute;
+    font-size: 3em;
+    top:20px;
+    left: 20px;
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+.durationPicker{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:.4rem;
+}
+.durationPicker input{
+    width: 200px;
+    padding-left: 10px;
+}

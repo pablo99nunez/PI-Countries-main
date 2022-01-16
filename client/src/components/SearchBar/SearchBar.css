@@ -1,0 +1,55 @@
+.searchBar{
+    background-color: #fff;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-left: 20px;
+}
+.searchBar .inputSearch{
+    background: #fff;
+    left: 50%;
+    position: absolute;
+    transition: .8s ease;
+    overflow: hidden;
+    height: 80%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    
+}
+.searchBar input{
+    height: 70%;
+    border:none;
+    font-size: 1.2rem;
+    left: 40px;
+    position: relative;
+}
+    
+.searchBar input:focus{
+    border: none;
+    outline:none
+}
+.searchBar img{
+    cursor: pointer;
+    z-index: 200;
+}
+.searchBar img:hover{
+    animation: bounce 600ms infinite ease-in-out; 
+}
+
+@keyframes bounce {
+    from{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    to{
+        transform: scale(1);
+    }
+}

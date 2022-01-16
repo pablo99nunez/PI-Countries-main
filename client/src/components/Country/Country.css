@@ -1,0 +1,37 @@
+.countryCard{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    background-color: #222;
+    color:white;
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 5px 5px 20px rgba(0,0,0,.6);
+    transition: .6s ease;
+    max-height: 200px;
+}
+.countryCard::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent,transparent,black);
+    top:0;
+    left:0;
+}
+.countryCard img{
+    /* width: 100%; */
+    height: 100%;
+}
+.countryCard:hover{
+    transform: scale(1.1);
+}
+.infoCountryCard{
+    position:absolute;
+    bottom: 0;
+    z-index:200;
+    padding:1rem;
+}

@@ -1,38 +1,98 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.backgroundImg{
+  position:absolute;
   min-height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  animation: floatUp 1s ease-in forwards;
+  z-index: -100;
+}
+.imgContainer{
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+}
+.app{
+  position:relative;
+  color:white;
   display: flex;
-  flex-direction: column;
+  font-size: 4rem;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  flex-direction: column;
+  overflow: hidden;
+}
+.welcome{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: appear 1s ease-in forwards;
+  animation-delay: 1s;
+  opacity:0;
+  position: relative;
+}
+.homeIco:hover{
+  transform: scale(1.2);
+  transition:all 300ms ease-in-out;
+}
+.title-cont{
+  position:relative;
+  overflow: hidden;
+
+}
+.title{
+  position: relative;
+}
+.title::after{
+  position: absolute;
+  top:200px;
+  transform-origin: 'bottom';
+  content:"Home.";
+  left: 0;
+  width: 4rem;
+  aspect-ratio: 1/1;
+}
+.change{
+  animation: change 300ms ease forwards;
 }
 
-.App-link {
-  color: #61dafb;
+.leave{
+  animation: change 300ms ease reverse;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes change {
+  from{
+    transform:translateY(0)
   }
-  to {
-    transform: rotate(360deg);
+  to{
+    transform: translateY(-200px);
+  }
+}
+
+
+@keyframes floatUp {
+  from{
+      transform:scale(1);
+      filter:blur(0)
+  }
+  to{
+      transform:scale(1.2);
+      filter:blur(3px)
+  }
+}
+@keyframes appear {
+  from{
+    transform:translateY(20px);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0px);
+    opacity:1;
   }
 }

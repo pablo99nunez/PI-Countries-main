@@ -1,0 +1,25 @@
+.dropMenu{
+    position: absolute;
+    background-color: rgba(0,0,0,.8);
+    backdrop-filter: blur(10px);
+    width: 100vw;
+    top:0;
+    left:0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1rem;
+    flex-direction: column;
+    z-index:10000;
+}
+.closeButton{
+    position: absolute;
+    left: 20px;
+    top:20px;
+    background: none;
+    border:none;
+    color:white;
+    font-size:2.125em;
+    cursor: pointer;
+}

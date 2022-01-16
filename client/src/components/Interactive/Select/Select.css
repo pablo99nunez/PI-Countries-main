@@ -1,0 +1,76 @@
+.select{
+    font-size: 1.2em;
+    background-color: #fff;
+    color:black;
+    width: 400px;
+    border-radius: 5px;
+    height: 50px;
+    overflow: hidden;
+    padding-left: 2rem;
+    transition: .5s ease;
+    position: relative;
+}
+.option{
+    position: relative;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    
+}
+.selected{
+    justify-content: space-between;
+    padding-right:20px
+}
+
+.option:hover{
+    color:#0AF;
+}
+.option:hover:after{
+    content: "";
+    position: absolute;
+    top:0;
+    left: -2rem;
+    width: calc(100% + 2rem);
+    height: inherit;
+  
+    background-color: rgba(0,0,0,.2);
+}
+.Arrow{
+
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Arrow::before{
+    
+    width: 3px;
+    height: 15px;
+    content:"";
+    background-color: black;
+    justify-self: right;
+    z-index: 200;
+    position: absolute;
+    border-radius: 2px;
+    transition: transform .3s;
+    transform: rotateZ(45deg);
+}
+.Arrow::after{
+    border-radius: 2px;
+    content:"";
+    left:-11px;
+    width: 3px;
+    height: 15px;
+    background-color: black;
+    position:absolute;
+    z-index: 200;
+    transition: transform .3s;
+    transform: rotateZ(-45deg);
+}
+.active .Arrow::after{
+    transform:rotateZ(-315deg)
+}
+.active .Arrow::before{
+    transform:rotateZ(315deg)
+}
