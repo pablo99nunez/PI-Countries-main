@@ -48,7 +48,9 @@ router.get("/countries",async (req,res)=>{
                 }))
             }
             
-            res.json(await Country.findAll())
+            res.json(await Country.findAll({
+                include:Activity
+            }))
             
             
         
@@ -134,15 +136,37 @@ router.post("/activity",async (req,res)=>{
           };
         let image=await postPost(options).catch(err=>console.error(err))
         console.log(image)
-        const act=await Activity.create({name,difficulty,duration,season,image}).catch(err=>{throw new Error(err)})
+        const act=await Activity.create({name,difficulty,duration,season,image})
         
-        act.setCountries(IDs).catch(err=>{throw new Error(err)})
+        act.setCountries(IDs)
         console.log(IDs)
         res.status(201).json({name,difficulty,duration,season,image})
     } catch (error) {
         console.log(error)
         res.sendStatus(404)
     }
+
+
 })
+router.get("/deleteAll",async (req,res)=>{
+    try{
+
+        await Country.destroy({
+        where:{}
+        });
+        await Activity.destroy({
+            where:{}
+        });
+        res.send("Borrado exitosamente")
+    }catch(err){
+        res.status(401).send("No se pudo eliminar,"+err)
+    }
+})
+router.get("/activity",async(req,res)=>{ 
+    const actividades=await Activity.findAll({})
+    res.json(actividades.map(e=>e.name))
+    
+})
+
 
 module.exports = router;

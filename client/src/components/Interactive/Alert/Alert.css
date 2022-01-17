@@ -23,6 +23,10 @@
     flex-direction: column;
     
 }
+.alertButtons{
+    display: flex;
+    font-size: .8em;
+}
 .warningType{
     background-color: darkred !important;
 }

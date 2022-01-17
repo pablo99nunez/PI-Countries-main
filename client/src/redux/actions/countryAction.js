@@ -3,6 +3,7 @@ export const GET_COUNTRY="GET_COUNTRY"
 export const SEARCH="SEARCH"
 export const FILTER_COUNTRIES="FILTER_COUNTRIES"
 export const ORDER_COUNTRIES="ORDER_COUNTRIES"
+export const ADD_ACTIVITY="ADD_ACTIVITY"
 
 
 export function getCountries(){
@@ -33,6 +34,12 @@ export function filterCountries(payload){
 export function orderCountries(payload){
     return function(dispatch){
         dispatch({type:ORDER_COUNTRIES,payload})
+    }
+}
+
+export function addActivities(payload){
+    return function(dispatch){
+        dispatch({type:ADD_ACTIVITY,payload})
     }
 }
 

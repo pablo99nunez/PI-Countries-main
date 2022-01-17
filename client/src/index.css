@@ -17,6 +17,7 @@ body{
 }
 input{
   font-family: 'Playfair Display',sans-serif;
+
 }
 input:focus{
   outline: none;

@@ -1,67 +1,97 @@
-import {FILTER_COUNTRIES, GET_COUNTRIES, GET_COUNTRY, ORDER_COUNTRIES, SEARCH} from '../actions/countryAction'
-const initialState={
-    countries:[],
-    country:{},
-    results:[]
-}
+import {
+  addActivities,
+  ADD_ACTIVITY,
+  FILTER_COUNTRIES,
+  GET_COUNTRIES,
+  GET_COUNTRY,
+  ORDER_COUNTRIES,
+  SEARCH,
+} from "../actions/countryAction";
+const initialState = {
+  countries: [],
+  country: {},
+  results: [],
+  activities: [],
+};
 
-export default function rootReducer(state=initialState,action){
 
-    switch(action.type){
-        case GET_COUNTRIES:{
-            return{
-                ...state,
-                countries:action.payload
-            }
-        }
-        case GET_COUNTRY:{
-            return{
-                ...state,
-                country:action.payload
-            }
-        }
-        case SEARCH:{
-            return{
-                ...state,
-                results:state.countries.filter(e=>e.name.toLowerCase().includes(action.payload.toLowerCase()))
-            }
-        }
-        case FILTER_COUNTRIES:{
-            let founds=state.results[0]?state.results:state.countries
-            return{
-                ...state,
-                results:founds.filter(e=>e.region==action.payload)
-            }
-        }
-        case ORDER_COUNTRIES:{
-            const {alf,pob} = action.payload
-            let founds=state.results[0]?[...state.results]:[...state.countries]
-           
 
-            return{
-                ...state,
-                results:founds.sort((a,b)=>{
-                    if(alf){
-                        if(a.name<b.name){
-                            return alf=="asc"?-1:1
-                        }
-                        else if(a.name>b.name)
-                        {
-                            return alf=="asc"?1:-1
-                        }else return 0
-                    }
-                    if(pob){
-                        if(a.population<b.population){
-                            return pob=="asc"?-1:1
-                        }else if(a.population>b.population)
-                        {
-                            return pob=="asc"?1:-1
-                        }else return 0
-                    }
-                })
 
-            }
-        }
-        default:return initialState
+export default function rootReducer(state = initialState, action) {
+  switch (action.type) {
+    case GET_COUNTRIES: {
+      
+      return {
+        ...state,
+        countries: action.payload,
+      };
     }
+    case GET_COUNTRY: {
+      return {
+        ...state,
+        country: action.payload,
+      };
+    }
+    case SEARCH: {
+      return {
+        ...state,
+        results: state.countries.filter((e) =>
+          e.name.toLowerCase().includes(action.payload.toLowerCase())
+        ),
+      };
+    }
+    case FILTER_COUNTRIES: {
+      let founds = state.results[0] ? state.results : state.countries;
+      let continents=action.payload.continent=="Todos"?
+      state.countries:
+      founds.filter((e) => e.region == action.payload.continent)
+      
+      let result=action.payload.activity=="Ninguna"?
+      continents:
+      state.activities.find(e=>e.name=action.payload.activity)
+      .IDs.filter(e=>continents.find(i=>i.id==e)).map(e=>continents.find(o=>o.id==e))
+      return {
+        ...state,
+        results: result
+      };
+    }
+    case ORDER_COUNTRIES: {
+      const { alf, pob } = action.payload;
+      let founds = state.results[0] ? [...state.results] : [...state.countries];
+
+      return {
+        ...state,
+        results: founds.sort((a, b) => {
+          if (alf) {
+            if (a.name < b.name) {
+              return alf == "asc" ? -1 : 1;
+            } else if (a.name > b.name) {
+              return alf == "asc" ? 1 : -1;
+            } else return 0;
+          }
+          if (pob) {
+            if (a.population < b.population) {
+              return pob == "asc" ? -1 : 1;
+            } else if (a.population > b.population) {
+              return pob == "asc" ? 1 : -1;
+            } else return 0;
+          }
+        }),
+      };
+    }
+
+    case ADD_ACTIVITY: {
+      let founds=state.countries.filter(e=>action.payload.IDs.find(id=>e.id==id))
+      console.log(founds)
+      founds.forEach(e=>{
+          e.activities=e.activities?[...e.activities,action.payload.name]:[action.payload.name]
+      })
+      return {
+        ...state,
+        activities: [...state.activities, action.payload]
+      };
+    }
+    default:
+      return initialState;
+  }
 }

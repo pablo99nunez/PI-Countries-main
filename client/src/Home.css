@@ -2,22 +2,9 @@
     display: flex;
     height: 100vh;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    
 }
 body{
     background-image: url('./assets/background.jpg');
     backdrop-filter: blur(2px);
-}
-.cards{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    width: 100%;
-    gap: 1rem;
-    padding: 20px 20px;
-    
-}
-.pagination{
-    display: flex;
-    flex-direction: row  ;
 }

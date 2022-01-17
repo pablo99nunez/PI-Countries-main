@@ -6,17 +6,27 @@ import "./CountryDetail.css";
 import Density from "../Density/Density";
 import { Link } from "react-router-dom";
 import ActivityCard from "../ActivityCards/ActivityCard";
+import { useState } from "react";
+import Loading from "../Loading";
 
 export default function CountryDetail() {
   let { id } = useParams();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true)
   const country = useSelector((state) => state.country);
   console.log(country);
   useEffect(() => {
     dispatch(getCountry(id));
   }, []);
+  useEffect(()=>{
+    if(country.image){
+      setLoading(false)
+    }
+  })
 
   return (
+      loading?<Loading></Loading>
+      :
     <>
       <Link to="/home" className="goBack">
         <h1>Patriam.</h1>
@@ -60,6 +70,7 @@ export default function CountryDetail() {
           <Density area={country.area} pop={country.population}></Density>
         </div>
       </div>
-    </>
+      </>
+      
   );
 }

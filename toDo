@@ -1,4 +1,8 @@
-*Agregar select de Actividades al filter
-*Poner mas lindo el ordenar
-*Hacer el slider
+*Solucionar actividades(Porque se pisan? Como hacer para obtener las actividades existentes? Y Filtrar correctamente)
+
+*Revisar el caso en que agregen dos actividades seguidas.
+
+*Hacer un boton en countryDetail que lleve a la pagina de actividades
+
 *Hacer los test
+*Deployar la base de datos

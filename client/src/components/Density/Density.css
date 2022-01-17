@@ -1,9 +1,9 @@
 .boxDensity{
     position:relative;
     background-color: #111;
-    border-radius: 5px     ;
+    border-radius: 20px;
     box-shadow: inset 0px 0px 100px black, inset 0 -20px 50px black;
-   border: 2px solid #aaa;
+    border: 2px solid #aaa;
     display: flex;
     align-items: center;
     justify-content: center;
