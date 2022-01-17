@@ -7,6 +7,8 @@ import Density from "../Density/Density";
 import { Link } from "react-router-dom";
 import ActivityCard from "../ActivityCards/ActivityCard";
 import { useState } from "react";
+import Button from "../Interactive/Button/Button";
+import { useNavigate } from "react-router";
 import Loading from "../Loading";
 
 export default function CountryDetail() {
@@ -14,7 +16,8 @@ export default function CountryDetail() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true)
   const country = useSelector((state) => state.country);
-  console.log(country);
+  const navigate=useNavigate()
+
   useEffect(() => {
     dispatch(getCountry(id));
   }, []);
@@ -62,7 +65,12 @@ export default function CountryDetail() {
               return <ActivityCard e={e} />;
             })}
           </div>
-            {!country.activities?.slice(0)[0] && <h2>No hay actividades disponibles</h2>}
+            {!country.activities?.slice(0)[0] &&
+            <>
+             <h2>No hay actividades disponibles</h2>
+             <Button onClick={()=>navigate("/add/"+country.name)} value="Agregar actividad"></Button>
+            </>
+             }
         </div>
 
         <div className="densityDetail">

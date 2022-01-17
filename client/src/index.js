@@ -21,6 +21,7 @@ ReactDOM.render(
           <Route path="/" element={<App/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/add" element={<AddActivity/>}/>
+          <Route path="/add/:pais" element={<AddActivity/>}/>
           <Route path="/:id" element={<CountryDetail />}/>
            
         </Routes>

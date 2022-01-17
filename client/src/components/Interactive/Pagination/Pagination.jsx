@@ -7,7 +7,6 @@ import "./Pagination.css";
 export default function Pagination({ content, per_page }) {
   const [page, setPage] = useState(0);
   const [active, setActive] = useState(0);
-  console.log(content);
   useEffect(()=>{
       setPage(0)
       setActive(0)

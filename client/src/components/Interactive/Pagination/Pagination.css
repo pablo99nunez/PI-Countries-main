@@ -9,12 +9,14 @@
 }
 
 .contentWrapper{
-    display: grid;
+    display: flex;
     gap:1rem;
     margin: 0 1rem;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     height: 100%;
+    align-content: center;
 }
 .contentWrapper span{
     position: absolute;
@@ -77,6 +79,7 @@
     background-color: #111;
     border-radius: 50vh;
     cursor: pointer;
+    transition: .3s ;
 }
 .active{
     background-color: #BBB;

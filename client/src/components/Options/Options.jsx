@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import './Options.css'
 
-export default function Options({handle=()=>{},onErase=()=>{},width=400}) {
-    let [opts,setOpts]=useState([])
+export default function Options({handle=()=>{},onErase=()=>{},width=400,value=[]}) {
+    let [opts,setOpts]=useState(
+        value.map(e=>{
+            return <div key={`opt${e}`} className='opt' onClick={()=>handleDelete(`opt${e}`,e)}>
+            {e}
+        </div>
+        })
+    )
     let results=[]
+
+    
 
     function handleDelete(e,value){
         setOpts(oldArray=>{
@@ -18,10 +26,10 @@ export default function Options({handle=()=>{},onErase=()=>{},width=400}) {
     function handleInput(e){
         if(e.key=="Enter"){
             const res = handle(e)
-            console.log(res)
+            
             if(res){
                 results.push(res)
-                console.log(opts.length)
+                
                 setOpts([...opts,
                 <div key={`opt${res}`} className='opt' onClick={()=>handleDelete(`opt${res}`,res)}>
                     {res}

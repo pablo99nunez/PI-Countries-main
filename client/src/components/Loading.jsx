@@ -19,7 +19,7 @@ export default function Loading() {
                 width:'100%',
                 objectFit:'cover'
             }} src={spin} alt="" />
-            <h3>Loading</h3>
+            
         </div>
     )
 }

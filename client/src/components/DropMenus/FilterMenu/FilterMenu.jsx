@@ -7,12 +7,12 @@ import Button from "../../Interactive/Button/Button";
 import "../dropMenu.css";
 
 export default function FilterMenu({ close, setPage }) {
-  const state = useSelector(state => state)
-  let activities = useSelector(state=>state.activities)
+  const countries = useSelector(state => state.countries)
   const dispatch = useDispatch();
   const [continent, setContinent] = useState("Americas");
   const [activity, setActivity] = useState("")
-
+  let activities = new Set(countries.map(e=>e.activities).filter(e=>e.length>0).map(e=>e.map(e=>e.name)).flat())
+  console.log(activities)
 
   return (
     <div className="dropMenu">
@@ -28,7 +28,7 @@ export default function FilterMenu({ close, setPage }) {
       ></Select>
       <h2>Activities:</h2>
       <Select
-        opt={["Ninguna"].concat(activities.map(e=>e.name))}
+        opt={["Ninguna"].concat([...activities,"Cualquiera"])}
         onSelect={setActivity}
       ></Select>
 

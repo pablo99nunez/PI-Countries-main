@@ -15,7 +15,9 @@ const initialState = {
 };
 
 
-
+const removeAccents = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+} 
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -36,20 +38,21 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         results: state.countries.filter((e) =>
-          e.name.toLowerCase().includes(action.payload.toLowerCase())
+          removeAccents(e.name.toLowerCase()).includes(removeAccents(action.payload.toLowerCase()))
         ),
       };
     }
     case FILTER_COUNTRIES: {
-      let founds = state.results[0] ? state.results : state.countries;
+      
       let continents=action.payload.continent=="Todos"?
       state.countries:
-      founds.filter((e) => e.region == action.payload.continent)
+      state.countries.filter((e) => e.region == action.payload.continent)
       
       let result=action.payload.activity=="Ninguna"?
       continents:
-      state.activities.find(e=>e.name=action.payload.activity)
-      .IDs.filter(e=>continents.find(i=>i.id==e)).map(e=>continents.find(o=>o.id==e))
+      action.payload.activity=="Cualquiera"?
+      continents.filter(e=>e.activities[0]):
+      continents.filter(e=>e.activities.find(a=>a.name==action.payload.activity))
       return {
         ...state,
         results: result
@@ -82,7 +85,7 @@ export default function rootReducer(state = initialState, action) {
 
     case ADD_ACTIVITY: {
       let founds=state.countries.filter(e=>action.payload.IDs.find(id=>e.id==id))
-      console.log(founds)
+      
       founds.forEach(e=>{
           e.activities=e.activities?[...e.activities,action.payload.name]:[action.payload.name]
       })

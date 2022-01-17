@@ -4,22 +4,23 @@ import Select from "../Interactive/Select/Select";
 import Button from "../Interactive/Button/Button";
 import Error from "../Interactive/Error/Error";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Options from "../Options/Options";
 import { useDispatch, useSelector } from "react-redux";
 import Alert from "../Interactive/Alert/Alert";
-import { addActivities } from "../../redux/actions/countryAction";
+import { addActivities, getCountries } from "../../redux/actions/countryAction";
 import { useRef } from "react";
 
 export default function AddActivity() {
   const [datei, setDatei] = useState(0);
   const [datef, setDatef] = useState(0);
   const [created, setCreated] = useState({});
+  const {pais}=useParams()
   const countries = useSelector((state) => state.countries);
   const activities = useSelector((state) => state.activities);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const paises = useRef(null)
+  
 
   const [errors, setErrors] = useState({
     name: "",
@@ -33,8 +34,20 @@ export default function AddActivity() {
     season: "Verano",
     duration: "",
     difficulty: "1",
-    IDs: [],
+    IDs: []
   });
+  useEffect(async () => {
+    await dispatch(getCountries())
+  }, [])
+  useEffect(()=>{
+    
+    setInput({
+      ...input,
+      IDs: [countries.find(e=>e.name==pais)?.id]
+    })
+  },[countries])
+    
+
   function preSubmit() {
     if (input.name.trim() == "") {
       setErrors({ ...errors, name: "Debes ingresar un nombre" });
@@ -59,6 +72,7 @@ export default function AddActivity() {
         ],
       })
       );
+      dispatch(getCountries())
       setInput({
         name:"",
         duration:"",
@@ -83,16 +97,21 @@ export default function AddActivity() {
   };
   const handlePaisesInput = (e) => {
     if (e.key == "Enter") {
+      console.log("KEY=ENTER")
       let found = countries.find((pais) =>
         pais.name.toLowerCase().includes(e.target.value.toLowerCase())
       );
+      console.log("found",found)
       if (found) {
-        if (input.IDs.includes(found.id)) {
+        if (!input.IDs.includes(found.id)) {
+          setInput({ ...input, IDs: [...input.IDs, found.id] });
+          console.log("Ingresado",found.id)
+          return found.name
+        } else{
+          
           setErrors({ ...errors, IDs: "Ya ingresaste ese pais" });
           return false
-        } else{
-          setInput({ ...input, IDs: [...input.IDs, found.id] })};
-          return found.name
+        }
       } else {
         setErrors({ ...errors, IDs: "No existe el pais ingresado" });
         return false
@@ -167,13 +186,8 @@ export default function AddActivity() {
         </div>
         <div className="inputBox">
           <h2>Paises</h2>
-          {/* <input type="text" name="IDs" ref={paises} onKeyDown={handlePaisesInput} />
-          {errors.IDs && <Error e={errors.IDs} />}
-          {input.IDs?.map((e) => {
-            let found = countries.find((pais) => pais.id == e);
-            return <p>{found.name}</p>;
-          })} */}
-          <Options handle={handlePaisesInput} onErase={handlePaisesErase} ></Options>
+          
+          <Options handle={handlePaisesInput} onErase={handlePaisesErase} value={[pais]}></Options>
           {errors.IDs && <Error e={errors.IDs} />}
         </div>
         <div className="botonesActivity">

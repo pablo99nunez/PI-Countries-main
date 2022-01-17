@@ -15,9 +15,12 @@ export function getCountries(){
 }
 export function getCountry(payload){
     return function(dispatch){
-        return fetch("http://localhost:3001/countries/"+payload).then(res=>res.json().then(payload=>{
-            dispatch({type:GET_COUNTRY, payload})
-        }))
+        if(payload!=undefined){
+
+            return fetch("http://localhost:3001/countries/"+payload).then(res=>res.json().then(payload=>{
+                dispatch({type:GET_COUNTRY, payload})
+            }))
+        }
     }
 }
 export function search(payload){
