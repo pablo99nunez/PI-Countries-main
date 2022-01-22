@@ -14,7 +14,7 @@ export default function Alert({value,type,buttons=["Ok"],onClick}) {
 
                     {buttons.map((e,i)=>{
                         
-                        return  <Button key={i} className="cerrarAlert" color="white" value={e} onClick={()=>{
+                        return  <Button key={i} className="cerrarAlert" color="white" textColor="black" value={e} onClick={()=>{
                             onClick[i]()
                             setActive(false)}}></Button>
                         })}

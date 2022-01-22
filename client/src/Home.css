@@ -4,7 +4,19 @@
     flex-direction: column;
     
 }
+.contentHome{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 body{
     background-image: url('./assets/background.jpg');
     backdrop-filter: blur(2px);
+}
+
+@media (max-width:1000px){
+    .contentHome{
+        height: auto;
+    }
 }

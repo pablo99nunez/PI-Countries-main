@@ -16,16 +16,25 @@ export default function Nav({setPage}) {
             <Link to="/home"><h2>Patriam.</h2></Link>
             <SearchBar></SearchBar>
 
-            <div>
+            <div style={{display:'flex'}}>
                
-                    <Link to="/add">
+                    <Link to="/add" className="tooltip">
                         <img src={postIco} alt="post activity"/>
+                        <span className='toolText'>Añadir actividad </span>
                     </Link>
-                    <img src={filterIco} alt="filter" onClick={()=>setFilter(!filter)}/>
-                    {filter? <FilterMenu setPage={setPage} close={setFilter}/>:null}
 
+                    <div className="tooltip">
+                        <img src={filterIco} alt="filter" onClick={()=>setFilter(!filter)}/>
+                        {filter? <FilterMenu setPage={setPage} close={setFilter}/>:null}
+                            <span className='toolText'>Filtrar </span>
+                        </div>
+
+                    <div className='tooltip'>
                     <img src={sortIco} alt="sort" onClick={()=>setSort(!sort)}/>
                     {sort? <SortMenu setPage={setPage} close={setSort}/>:null}
+                        <span className='toolText'>Ordenar </span>
+                    </div>
+
                     
                     
        

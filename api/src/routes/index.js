@@ -38,7 +38,7 @@ router.get("/countries",async (req,res)=>{
                         id:c.cca3,
                         key:c.cca3,
                         name:c.translations.spa.common,
-                        image:c.flags[0],
+                        image:c.flags[1],
                         region:c.region,
                         capital:c.capital?c.capital[0]:"No tiene capital",
                         subregion:c.subregion,

@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 import store from './redux/store'
 import { Routes,Route } from 'react-router';
 import {BrowserRouter} from 'react-router-dom'
-
+import Test from './Test'; 
 import App from './App';
 import Home from './Home'
 import AddActivity from './components/AddActivity/AddActivity';
@@ -23,6 +23,7 @@ ReactDOM.render(
           <Route path="/add" element={<AddActivity/>}/>
           <Route path="/add/:pais" element={<AddActivity/>}/>
           <Route path="/:id" element={<CountryDetail />}/>
+          <Route path="/test" element={<Test />}/>
            
         </Routes>
       </Provider>

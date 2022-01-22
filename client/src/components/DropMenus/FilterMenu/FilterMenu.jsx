@@ -26,7 +26,7 @@ export default function FilterMenu({ close, setPage }) {
         opt={["Todos","Americas", "Africa", "Europe", "Asia", "Oceania", "Antarctic"]}
         onSelect={setContinent}
       ></Select>
-      <h2>Activities:</h2>
+      <h2>Actividades:</h2>
       <Select
         opt={["Ninguna"].concat([...activities,"Cualquiera"])}
         onSelect={setActivity}

@@ -1,17 +1,21 @@
 import {
-  addActivities,
+  
   ADD_ACTIVITY,
   FILTER_COUNTRIES,
   GET_COUNTRIES,
   GET_COUNTRY,
   ORDER_COUNTRIES,
   SEARCH,
+  ERROR,
+  TOGGLE_APIS
 } from "../actions/countryAction";
 const initialState = {
   countries: [],
   country: {},
   results: [],
   activities: [],
+  error:null,
+  APIenabled:true
 };
 
 
@@ -38,8 +42,13 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         results: state.countries.filter((e) =>
-          removeAccents(e.name.toLowerCase()).includes(removeAccents(action.payload.toLowerCase()))
-        ),
+          removeAccents(e.name.toLowerCase()).includes(removeAccents(action.payload.toLowerCase())))
+          .sort((a,b)=>{
+            if(a.length-action.payload.length < b.length-action.payload.length){
+              return 1
+            }else return -1
+          })
+          
       };
     }
     case FILTER_COUNTRIES: {
@@ -93,6 +102,18 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         activities: [...state.activities, action.payload]
       };
+    }
+    case ERROR:{
+      return{
+        ...state,
+        error:action.payload
+      }
+    }
+    case TOGGLE_APIS:{
+      return{
+        ...state,
+        APIenabled:!state.APIenabled
+      }
     }
     default:
       return initialState;

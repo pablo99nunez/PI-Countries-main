@@ -15,9 +15,6 @@ export default function Pagination({ content, per_page }) {
     <div className="pagination">
       <div
         className="contentWrapper"
-        style={{
-          gridTemplateColumns: "repeat(" + Math.ceil(per_page / 2) + ",1fr)",
-        }}
       >
         {content.map((e) => e).slice(page, page + per_page)}
         <span

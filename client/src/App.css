@@ -65,6 +65,15 @@
   animation: change 300ms ease reverse;
   
 }
+.toggleApi{
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  font-size:1rem;
+  display:flex;
+  align-items: center;
+  gap: 10px;
+}
 
 @keyframes change {
   from{

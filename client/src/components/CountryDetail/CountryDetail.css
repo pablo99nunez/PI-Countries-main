@@ -1,11 +1,16 @@
-.countryDetail .countryBack{
+.countryDetail {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
     z-index: -100;
     top:0
 }
+.countryDetail .countryBack{
+    object-fit: cover;
+    width: 100%;
+}
+
+
 .info img{
     max-width: 250px;
     border-radius: 5px;

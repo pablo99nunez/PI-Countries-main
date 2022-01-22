@@ -9,14 +9,15 @@
 }
 
 .contentWrapper{
-    display: flex;
+    display: grid;
     gap:1rem;
     margin: 0 1rem;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(5,minmax(200px,1fr));
     justify-content: center;
     align-items: center;
-    height: 100%;
     align-content: center;
+    
+    
 }
 .contentWrapper span{
     position: absolute;
@@ -83,4 +84,15 @@
 }
 .active{
     background-color: #BBB;
+}
+@media (max-width:1000px) {
+   .contentWrapper{
+        grid-template-columns: 1fr;
+        gap:0;
+        margin:0;
+   }
+   .contentWrapper span{
+       display: none;
+   }
+   
 }

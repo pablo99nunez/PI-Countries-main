@@ -27,7 +27,9 @@ export default function Home() {
       await dispatch(getCountries());
       dispatch(orderCountries({ pob: "desc" }));
     }
+    
   }, []);
+  
   useEffect(() => {
     if (countries[0]) {
       setIsLoading(false);
@@ -36,14 +38,7 @@ export default function Home() {
   return (
     <div className="home">
       <Nav setPage={setPage}></Nav>
-      <div
-        style={{
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div className="contentHome">
         {isLoading ? (
           <Loading></Loading>
         ) : results[0] ? (

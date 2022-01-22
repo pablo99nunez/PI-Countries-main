@@ -9,18 +9,19 @@ import Options from "../Options/Options";
 import { useDispatch, useSelector } from "react-redux";
 import Alert from "../Interactive/Alert/Alert";
 import { addActivities, getCountries } from "../../redux/actions/countryAction";
-import { useRef } from "react";
+import TimePicker from "../Interactive/TimePicker/TimePicker";
+import timer from "../../assets/icons/timer.svg";
+import { getHours } from "../SecondsTranslate";
 
 export default function AddActivity() {
-  const [datei, setDatei] = useState(0);
-  const [datef, setDatef] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [time, showTime] = useState(false);
   const [created, setCreated] = useState({});
-  const {pais}=useParams()
+  const { pais } = useParams();
   const countries = useSelector((state) => state.countries);
   const activities = useSelector((state) => state.activities);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
 
   const [errors, setErrors] = useState({
     name: "",
@@ -34,19 +35,19 @@ export default function AddActivity() {
     season: "Verano",
     duration: "",
     difficulty: "1",
-    IDs: []
+    IDs: [],
   });
   useEffect(async () => {
-    await dispatch(getCountries())
-  }, [])
-  useEffect(()=>{
-    
-    setInput({
-      ...input,
-      IDs: [countries.find(e=>e.name==pais)?.id]
-    })
-  },[countries])
-    
+    await dispatch(getCountries());
+  }, []);
+  useEffect(() => {
+    if (pais) {
+      setInput({
+        ...input,
+        IDs: [countries.find((e) => e.name == pais)?.id],
+      });
+    }
+  }, [countries]);
 
   function preSubmit() {
     if (input.name.trim() == "") {
@@ -61,34 +62,27 @@ export default function AddActivity() {
       setErrors({ ...errors, IDs: "Debes ingresar al menos un pais" });
       throw new Error("Debes ingresar al menos un pais");
     }
-    let activity=activities.find((e) => (e.name = input.name))
-    let existentIDsActivities = activity?activity.IDs:[]
-     dispatch(
+    let activity = activities.find((e) => (e.name = input.name));
+    let existentIDsActivities = activity ? activity.IDs : [];
+    dispatch(
       addActivities({
         name: input.name,
-        IDs: [
-          ...existentIDsActivities,
-          ...input.IDs,
-        ],
+        IDs: [...existentIDsActivities, ...input.IDs],
       })
-      );
-      dispatch(getCountries())
-      setInput({
-        name:"",
-        duration:"",
-        IDs:[],
-        difficulty:1
-      });
-      
+    );
+    dispatch(getCountries());
+    setInput({
+      name: "",
+      duration: "",
+      IDs: [],
+      difficulty: 1,
+    });
   }
 
   function validate() {
     let errores = {};
     if (input.name.trim() == "") {
       errores.name = "No puede estar vacio";
-    }
-    if (input.duration > 0) {
-      errores.duration = "La fecha final no puede ser antes de la inicial.";
     }
     return errores;
   }
@@ -97,41 +91,45 @@ export default function AddActivity() {
   };
   const handlePaisesInput = (e) => {
     if (e.key == "Enter") {
-      console.log("KEY=ENTER")
-      let found = countries.find((pais) =>
+      console.log("KEY=ENTER");
+      let found = countries.filter((pais) =>
         pais.name.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-      console.log("found",found)
+      ).sort((a,b)=>{
+        if(a.length-e.target.value.length < b.length-e.target.value.length){
+          return 1
+        }else return -1
+      })[0]
+      ;
+      console.log("found", found);
       if (found) {
         if (!input.IDs.includes(found.id)) {
           setInput({ ...input, IDs: [...input.IDs, found.id] });
-          console.log("Ingresado",found.id)
-          return found.name
-        } else{
-          
+          console.log("Ingresado", found.id);
+          return found.name;
+        } else {
           setErrors({ ...errors, IDs: "Ya ingresaste ese pais" });
-          return false
+          return false;
         }
       } else {
         setErrors({ ...errors, IDs: "No existe el pais ingresado" });
-        return false
+        return false;
       }
-      }
+    }
   };
-  const handlePaisesErase=(e)=>{
-    const found =countries.find(pais=>pais.name==e)
-    console.log(found)
-    setInput(oldState=>{
-      oldState.IDs=oldState.IDs.filter(pais=>pais!=found.id)
-      return oldState
-    })
-  }
+  const handlePaisesErase = (e) => {
+    const found = countries.find((pais) => pais.name == e);
+    console.log(found);
+    setInput((oldState) => {
+      oldState.IDs = oldState.IDs.filter((pais) => pais != found.id);
+      return oldState;
+    });
+  };
   useEffect(() => {
     setErrors(validate(input));
   }, [input]);
   useEffect(() => {
-    setInput({ ...input, duration: datei - datef });
-  }, [datei, datef]);
+    setInput({ ...input, duration });
+  }, [duration]);
 
   return (
     <div className="activityPage">
@@ -139,7 +137,12 @@ export default function AddActivity() {
       <div className="form">
         <div className="inputBox">
           <h2>Nombre</h2>
-          <input type="text" name="name" value={input.name} onChange={handleInputChange} />
+          <input
+            type="text"
+            name="name"
+            value={input.name}
+            onChange={handleInputChange}
+          />
           {errors.name && <Error e={errors.name}></Error>}
         </div>
         <div className="inputBox">
@@ -156,22 +159,20 @@ export default function AddActivity() {
         <div className="inputBox">
           <h2>Duracion</h2>
           <div className="durationPicker">
-            <div>
-              <h4>Desde</h4>
-              <input
-                type="date"
-                onChange={(e) => setDatei(e.target.valueAsNumber / 1000)}
-              />
-            </div>
-            <div>
-              <h4>Hasta</h4>
-              <input
-                type="date"
-                onChange={(e) => setDatef(e.target.valueAsNumber / 1000)}
-                onBlur={handleInputChange}
-              />
-              {errors.duration && <Error e={errors.duration}></Error>}
-            </div>
+            <img src={timer} alt="duracion" style={{ 
+              background: "white",
+              padding:'10px',
+              borderRadius:'5px',
+              cursor:'pointer'
+              }} onClick={()=>showTime(!time)}/>
+            {time ? (
+              <TimePicker
+                onClose={() => showTime(false)}
+                onSubmit={(e) => setDuration(e)}
+              ></TimePicker>
+            ) : null}
+            <h2>{getHours(duration)} horas</h2>
+            {errors.duration && <Error e={errors.duration}></Error>}
           </div>
         </div>
         <div className="inputBox">
@@ -186,8 +187,12 @@ export default function AddActivity() {
         </div>
         <div className="inputBox">
           <h2>Paises</h2>
-          
-          <Options handle={handlePaisesInput} onErase={handlePaisesErase} value={[pais]}></Options>
+
+          <Options
+            handle={handlePaisesInput}
+            onErase={handlePaisesErase}
+            value={[pais]}
+          ></Options>
           {errors.IDs && <Error e={errors.IDs} />}
         </div>
         <div className="botonesActivity">
@@ -232,12 +237,15 @@ export default function AddActivity() {
             <Alert
               type={created.type}
               value={created.value}
-              buttons={["Volver a Home","Agregar otra"]}
-              onClick={[() => {
-                navigate("/home");
-              },()=>{
-                window.location.reload()
-              }]}
+              buttons={["Volver a Home", "Agregar otra"]}
+              onClick={[
+                () => {
+                  navigate("/home");
+                },
+                () => {
+                  window.location.reload();
+                },
+              ]}
             />
           )}
         </div>

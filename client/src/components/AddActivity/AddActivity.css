@@ -38,9 +38,8 @@
     position: relative;
 }
 .durationPicker{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap:.4rem;
+    display:flex;
+    gap:1rem;
 }
 .durationPicker input{
     width: 200px;

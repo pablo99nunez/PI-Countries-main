@@ -10,12 +10,15 @@ import { useState } from "react";
 import Button from "../Interactive/Button/Button";
 import { useNavigate } from "react-router";
 import Loading from "../Loading";
+import { getRandomColor } from "../RandomColor/RandomColor";
 
 export default function CountryDetail() {
   let { id } = useParams();
   const dispatch = useDispatch();
+  const error=useSelector(state=>state.error)
   const [loading, setLoading] = useState(true)
   const country = useSelector((state) => state.country);
+  const APIenabled = useSelector((state) => state.APIenabled);
   const navigate=useNavigate()
 
   useEffect(() => {
@@ -28,14 +31,15 @@ export default function CountryDetail() {
   })
 
   return (
+      error?<h2>Error</h2>:
       loading?<Loading></Loading>
       :
     <>
       <Link to="/home" className="goBack">
         <h1>Patriam.</h1>
       </Link>
-      <div className="countryDetail">
-        {country.landscape ? (
+      <div className="countryDetail" style={!APIenabled?{backgroundColor:getRandomColor()}:{}}>
+        {country.landscape && APIenabled? (
           <img className="countryBack" src={country.landscape} alt="" />
         ) : (
           ""
