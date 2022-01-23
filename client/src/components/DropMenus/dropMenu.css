@@ -1,5 +1,5 @@
 .dropMenu{
-    position: absolute;
+    position: fixed;
     background-color: rgba(0,0,0,.8);
     backdrop-filter: blur(10px);
     width: 100vw;
@@ -12,6 +12,21 @@
     gap:1rem;
     flex-direction: column;
     z-index:10000;
+}
+.dropMenu img{
+    transition: .3s ease;
+}
+.orderBox{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.filter-green{
+    filter: invert(50%) sepia(7%) saturate(4119%) hue-rotate(71deg) brightness(112%) contrast(93%);
+    transform: scale(1.2);
 }
 .closeButton{
     position: absolute;

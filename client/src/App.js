@@ -5,11 +5,15 @@ import {Link} from 'react-router-dom'
 import Loading from './components/Loading';
 import { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries } from './redux/actions/countryAction';
+import { getCountries, toggleApis } from './redux/actions/countryAction';
+import { useNavigate } from 'react-router';
+
 
 function App() {
   const dispatch = useDispatch()
   const countries = useSelector(state=>state.countries)
+  const APIenabled = useSelector(state=>state.APIenabled)
+  const navigate=useNavigate()
   const [changeTitle, setChangeTitle] = useState("")
   useEffect(()=>{
     dispatch(getCountries())
@@ -26,10 +30,16 @@ function App() {
 
           {countries?
           <Link to="/home" className='homeIco'>
-            <img src={homeIco} alt="home" onMouseOver={()=>setChangeTitle("change")} onMouseLeave={()=>setChangeTitle("")}/>
+            <img src={homeIco} alt="home"  onMouseOver={()=>setChangeTitle("change")} onMouseLeave={()=>setChangeTitle("")}/>
           </Link>
           :<Loading/>}
+
         </div>
+         
+          <div className="toggleApi">
+            <h4>Turn on/off image API</h4>
+            <input type="checkbox" onChange={()=>dispatch(toggleApis())} checked={APIenabled}/>
+          </div>
 
     </div>
   )

@@ -1,0 +1,126 @@
+.timePicker{
+    border-radius: 20px;
+    width: 300px;
+    aspect-ratio: 1/1.4;
+    background: #aeaeae;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding:2em 0;
+    box-shadow: inset -20px -20px 20px rgba(0,0,0,0.5),inset 5px 5px 20px rgba(0,0,0,0.5);
+    position:absolute;
+    top:0;
+    z-index: 500;
+    animation: appearWatch 500ms ease forwards;
+    transform: scale(.8);
+}
+.time{
+    padding:1rem;
+    background: #232323;
+    position:relative;
+    color:white;
+    user-select: none;
+    margin:.5rem;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.less24, .plus24{
+    position:absolute;
+    top:calc(50% - 1rem);
+    height: 1rem;
+    color:#232323;
+    cursor:pointer;
+    transition: .2s;
+    user-select: none;
+}
+.less24:hover, .plus24:hover{
+    color:aqua;
+}
+.less24{
+    left:-20px;
+}
+.plus24{
+    right:-20px;
+}
+.picker{
+    position:relative;
+    width:200px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background:#232323;
+    border:10px solid #565656;
+    box-sizing: content-box;
+    
+}
+.nLittle{
+    color:#989898 !important;
+    transform: scale(.9);
+}
+.picker .number{
+    position: absolute;
+    color:white;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.line{
+    width:3px;
+    position: absolute;
+    left:100px;
+    top:0;
+    height: 100px;
+    background:aqua;
+    transform-origin: bottom;
+    transition: .3s;
+    animation: round 1s ease;
+    animation-delay: 300ms;
+}
+.picker .center{
+    width: 10px;
+    background-color: aqua;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    position: absolute;
+    top: 95px;
+    left: 95px;
+}
+.picker .activeTime{
+    background-color: #232323;
+    color:aqua !important;
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+
+
+@keyframes appearWatch {
+    from{
+        opacity:0
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+
+@keyframes round {
+    from{
+        transform: rotateZ(360deg);
+    }
+    to{
+        transform: rotateZ(0);
+    }
+}

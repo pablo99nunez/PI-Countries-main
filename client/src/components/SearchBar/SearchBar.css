@@ -8,9 +8,11 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    z-index: 20000;
     padding-left: 20px;
 }
 .searchBar .inputSearch{
+    width: 400px;
     background: #fff;
     left: 50%;
     position: absolute;
@@ -20,7 +22,7 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
-    
+   
 }
 .searchBar input{
     height: 70%;

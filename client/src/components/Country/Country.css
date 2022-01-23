@@ -1,37 +1,54 @@
 .countryCard{
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-    object-fit: cover;
+    padding: 1rem;
     background-color: #222;
+    background-position: center;
+    background-size: cover;
     color:white;
     text-align: center;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 5px 5px 20px rgba(0,0,0,.6);
     transition: .6s ease;
-    max-height: 200px;
+    max-width: 300px;
+    
+    aspect-ratio: 1.5/1;
 }
 .countryCard::after{
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(transparent,transparent,black);
+    background: linear-gradient(rgba(0,0,0,0) 50%,rgba(0,0,0,.5) 70%,rgba(0,0,0,1));
     top:0;
     left:0;
 }
-.countryCard img{
-    /* width: 100%; */
-    height: 100%;
-}
+
 .countryCard:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 .infoCountryCard{
-    position:absolute;
-    bottom: 0;
-    z-index:200;
-    padding:1rem;
+    z-index: 200;
+}
+
+@media (max-width:1000px){
+    .countryCard{
+        width: 100% !important;
+        border-radius: 0;
+        aspect-ratio: 3/1;
+        max-width: none;
+        align-items: center;
+        
+        
+    }
+    .countryCard::after{
+        backdrop-filter: brightness(.7);
+    }
+    .countryCard:hover{
+        transform: none;
+    }
+    
 }

@@ -27,7 +27,8 @@ export default function SearchBar() {
       <div 
         className="inputSearch"
         style={{
-            width: active ? 400 : 0,
+            /* width: active ? 400 : 0, */
+            transform:`${active?'scale(1)':"scale(0)"} ${window.visualViewport.width<1000?'translate(-200px,50px)':""}`
         }}>
 
         <input
@@ -36,9 +37,12 @@ export default function SearchBar() {
             placeholder="Buscar un país..."
             name="searchValue"
             value={toSearch}
-            onKeyDown={(e)=>e.key=="Enter"?dispatch(search(toSearch)):undefined}
+            
             id="search"
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value)
+              dispatch(search(e.target.value))
+            }}
             />
         </div>
     </div>

@@ -15,6 +15,7 @@
     grid-template-columns: 1fr 1fr;
     padding:1rem;
     gap:1rem;
+    position: relative;
 }
 .activityPage input{
     border:none;
@@ -37,11 +38,33 @@
     position: relative;
 }
 .durationPicker{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap:.4rem;
+    display:flex;
+    gap:1rem;
 }
 .durationPicker input{
     width: 200px;
     padding-left: 10px;
+}
+
+.botonesActivity{
+    position: absolute;
+    display: flex;
+    bottom: 1rem;
+    right: 1rem;
+}
+@media (max-width:1000px){
+    .activityPage .form{
+        grid-template-columns: 1fr;
+    }
+    .titlePage{
+        position:relative
+    }
+    .activityPage{
+        gap:1rem;
+        height: auto;
+    }
+    .botonesActivity{
+        justify-self: flex-end;
+        position: relative;
+    }
 }

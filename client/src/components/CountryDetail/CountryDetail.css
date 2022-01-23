@@ -1,11 +1,16 @@
-.countryDetail .countryBack{
+.countryDetail {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
     z-index: -100;
     top:0
 }
+.countryDetail .countryBack{
+    object-fit: cover;
+    width: 100%;
+}
+
+
 .info img{
     max-width: 250px;
     border-radius: 5px;
@@ -24,8 +29,10 @@
     background: linear-gradient( transparent,rgba(0,0,0,.6),black);
     width: 100vw;
 }
+
 .detail{
     min-height: 100vh;
+    
     width: 100vw;
     position: absolute;
     top:100vh;
@@ -61,4 +68,34 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+@media (max-width:1000px){
+    .info{
+        flex-direction: column;
+        align-self: center;
+        position:relative;
+        text-align: center;
+        background:transparent;
+    }
+    .countryDetail{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .detail{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .countryBack{
+        position: absolute;
+        top:0;
+        object-fit: cover;
+        height: 100vh;
+    }
+    .infoText{
+        width: 100vw;
+        background:linear-gradient(transparent,rgba(0,0,0,0.5) 20%,rgba(0,0,0,0.5) 80%,transparent);
+    }
 }

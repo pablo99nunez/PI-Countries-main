@@ -15,10 +15,9 @@ export default function Country({id}) {
         }
     },[countries])
     return (
-        <Link to={"/"+country.id} className='countryCard'>
+        <Link to={"/"+country.id} className='countryCard' style={{backgroundImage:`url(${country.image})`}}>
             {!loading?
             <>
-                <img src={country.image} alt={`${country.name}Image`}/>
                 <div className="infoCountryCard">
  
                     <h3>{country.name}</h3>

@@ -5,6 +5,7 @@
   margin:0;
   box-sizing: border-box;
   text-decoration: none;
+  user-zoom: none;
 }
 a{
   color:inherit
@@ -13,10 +14,12 @@ a{
 body{
   min-height: 100vh;
   overflow-x: hidden;
-  font-family: 'Playfair Display',sans-serif;
+  
+  font-family: 'Playfair Display',serif;
 }
 input{
   font-family: 'Playfair Display',sans-serif;
+
 }
 input:focus{
   outline: none;

@@ -7,9 +7,25 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: 0px 5px 10px rgba(0,0,0,.8);
-    position: absolute;
+    position: relative;
     top:0;
 }
 .nav img{
     cursor:pointer;
+}
+.tooltip{
+    position: relative;
+    
+}
+.toolText{
+    position: absolute;
+    top:100%;
+    left:0;
+    background:#111;
+    padding:10px;
+    border-radius: 5px;
+    display:none;
+}
+.tooltip:hover .toolText{
+    display:block
 }

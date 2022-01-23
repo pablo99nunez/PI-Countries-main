@@ -1,16 +1,20 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { getRandomColor } from '../RandomColor/RandomColor'
+import { getHours } from '../SecondsTranslate'
 import './ActivityCard.css'
 
 export default function ActivityCard({e}) {
-    let duration=Math.abs(e.duration)/60/60/24+" dias"
+    let duration=`${getHours(e.duration)} horas`
+    const APIenabled=useSelector(state=>state.APIenabled)
     return (
         <div className="activityWrap">
 
             <div className='activityCard'>
-                <div className="infoActivityFront">
+                <div className="infoActivityFront" style={!APIenabled?{backgroundColor:getRandomColor()}:{}}>
 
                     <h1>{e.name.toUpperCase()}</h1>
-                    <img src={e.image}  />
+                    {APIenabled&& <img src={e.image}  />}
                 </div>
                 <div className='infoActivityBack'>
 
