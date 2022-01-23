@@ -210,7 +210,7 @@ export default function AddActivity() {
             type="submit"
             onClick={() => {
               preSubmit();
-              fetch(`http://${window.location.hostname}:3001/activity`, {
+              fetch(`http${window.location.hostname=="localhost"?"":"s"}://${window.location.hostname=="localhost"?"localhost:5000":window.location.hostname}/activity`, {
                 method: "post",
                 headers: {
                   "Content-Type": "application/json",
