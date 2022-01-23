@@ -32,7 +32,7 @@ const port=process.env.PORT || 3001
 conn.sync().then(() => {
   server.listen(port, async () => {
     console.log(__dirname.slice(0,__dirname.length-4)+"/client/build")
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log('%s listening at',port); // eslint-disable-line no-console
     
   });
 })
