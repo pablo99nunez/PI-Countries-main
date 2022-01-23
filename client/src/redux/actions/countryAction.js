@@ -8,10 +8,10 @@ export const ADD_ACTIVITY = "ADD_ACTIVITY";
 export const TOGGLE_APIS = "TOGGLE_APIS";
 
 
-const hostname = window.location.hostname;
-const url=`http${hostname=="localhost"?'':"s"}://${hostname=="localhost"?hostname+":5000":hostname}`
+const url='https://patriam-app.herokuapp.com'
+
 export function getCountries() {
-  console.log(url,process.env.PORT)
+  console.log(url)
   return function (dispatch) {
     return fetch(url+'/countries').then((res) =>
       res.json().then((payload) => {
