@@ -5,14 +5,14 @@ const axios=require("axios").default;
 const path = require('path')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const root="C:/Users/lucia/Documents/Henry/PI-Countries-main"
+const root=""
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.get("/",(req,res)=>{
     
-    res.sendFile(path.resolve(root,"client","build","index.html"))
+    res.sendFile(path.resolve(__dirname,"client","build","index.html"))
     
   })
 router.get("/countries",async (req,res)=>{
