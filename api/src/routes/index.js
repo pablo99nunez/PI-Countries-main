@@ -12,7 +12,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.get("/",(req,res)=>{
     
-    res.sendFile(path.resolve(__dirname,"client","build","index.html"))
+    res.sendFile(path.resolve(__dirname+"/../../../client/build/index.html"))
     
   })
 router.get("/countries",async (req,res)=>{
