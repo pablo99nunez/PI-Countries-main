@@ -130,7 +130,8 @@ export default function AddActivity() {
   useEffect(() => {
     setInput({ ...input, duration });
   }, [duration]);
-
+  let hostname=window.location.hostname
+  const url=`http${hostname=="localhost"?'':"s"}://${hostname=="localhost"?hostname+":5000":hostname}`
   return (
     <div className="activityPage">
       <h1 className="titlePage">Añadir actividad turistica.</h1>
@@ -210,7 +211,7 @@ export default function AddActivity() {
             type="submit"
             onClick={() => {
               preSubmit();
-              fetch(`http${window.location.hostname=="localhost"?"":"s"}://${window.location.hostname=="localhost"?"localhost:5000":window.location.hostname}/activity`, {
+              fetch(`${url}/activity`, {
                 method: "post",
                 headers: {
                   "Content-Type": "application/json",
