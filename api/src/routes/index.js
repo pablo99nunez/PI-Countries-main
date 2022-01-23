@@ -82,7 +82,7 @@ async function postPost(options){
 router.get("/countries/:idPais",async (req,res)=>{
     
     if(!await Country.findByPk("ARG")){
-        await axios.get("http://localhost:3001/countries")
+        await axios.get(`https://${window.location.hostname}:3001/countries`)
     }
     try {
         const country=await Country.findByPk(req.params.idPais,{include:Activity})

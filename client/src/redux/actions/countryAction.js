@@ -21,7 +21,7 @@ export function getCountries() {
 export function getCountry(payload) {
   return function (dispatch) {
     if (payload != undefined) {
-      return fetch(`http://${hostname}:3001/countries/` + payload).then((res) =>
+      return fetch(`https://${hostname}:3001/countries/` + payload).then((res) =>
         res
           .json()
           .then((payload) => {
