@@ -2,14 +2,19 @@ const { Router } = require('express');
 const {conn,Country,Activity,User} =require("../db")
 const {Op} = require("sequelize")
 const axios=require("axios").default;
-
+const path = require('path')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-
+const root="C:/Users/lucia/Documents/Henry/PI-Countries-main"
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+router.get("/",(req,res)=>{
+    
+    res.sendFile(path.resolve(root,"client","build","index.html"))
+    
+  })
 router.get("/countries",async (req,res)=>{
     if(req.query.name){
         try {
