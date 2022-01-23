@@ -65,7 +65,11 @@ export default function CountryDetail() {
         <div className="activitiesWrap">
           <h2>Actividades</h2>
           <div className="gridActivities">
-            {country.activities?.map((e) => {
+            {country.activities?.filter((e,i)=>{
+              if(country.activities[i+1])
+              return e.name!=country.activities[i+1].name
+              return true
+            }).map((e) => {
               return <ActivityCard e={e} />;
             })}
           </div>

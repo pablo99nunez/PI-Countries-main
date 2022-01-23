@@ -14,7 +14,7 @@
     box-shadow: 5px 5px 20px rgba(0,0,0,.6);
     transition: .6s ease;
     max-width: 300px;
-    
+    animation: cardAppear 500ms ease-in-out;
     aspect-ratio: 1.5/1;
 }
 .countryCard::after{
@@ -51,4 +51,10 @@
         transform: none;
     }
     
+}
+@keyframes cardAppear{
+    from{
+        transform: translateY(50px) scale(0);
+        opacity: 0;
+    }
 }
