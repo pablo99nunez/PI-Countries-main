@@ -11,6 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/pablo99nunez/PI-Countries-main.git"
   },
+  "dependencies": {
+    "express":"*",
+    "body-parser":"*"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
