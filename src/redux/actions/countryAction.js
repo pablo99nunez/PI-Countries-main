@@ -8,7 +8,7 @@ export const ADD_ACTIVITY = "ADD_ACTIVITY";
 export const TOGGLE_APIS = "TOGGLE_APIS";
 
 
-const url='https://patriam-app.herokuapp.com'
+const url='https://patriam-back.herokuapp.com'
 
 
 export function getCountries() {
