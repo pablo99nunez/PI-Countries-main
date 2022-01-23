@@ -10,11 +10,13 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get("/",(req,res)=>{
-    
+router.get('/',(req,res)=>{
     res.sendFile(path.resolve(__dirname+"/../../../client/build/index.html"))
+})
+router.get("/home",(req,res)=>{
+    res.redirect("/")
+})
     
-  })
 router.get("/countries",async (req,res)=>{
     if(req.query.name){
         try {
@@ -174,7 +176,9 @@ router.get("/activity",async(req,res)=>{
     
 })
 
-
+router.get("/:id",(req,res)=>{
+    res.redirect("/")
+})
 
 
 module.exports = router;
