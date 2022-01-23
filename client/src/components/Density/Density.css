@@ -24,6 +24,7 @@
 .littlePerson{
     animation: moving 3s ease-in-out infinite;
     animation-direction: alternate;
+    filter: brightness(0) saturate(100%) invert(63%) sepia(50%) saturate(7487%) hue-rotate(74deg) brightness(99%) contrast(108%);
 }
 .boxInBox{
     position:relative;

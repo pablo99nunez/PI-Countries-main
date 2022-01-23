@@ -27,7 +27,8 @@ export default function SearchBar() {
       <div 
         className="inputSearch"
         style={{
-            width: active ? 400 : 0,
+            /* width: active ? 400 : 0, */
+            transform:`${active?'scale(1)':"scale(0)"} ${window.visualViewport.width<1000?'translate(-200px,50px)':""}`
         }}>
 
         <input

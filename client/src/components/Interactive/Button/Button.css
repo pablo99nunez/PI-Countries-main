@@ -7,6 +7,7 @@
     color:white;
     cursor:pointer;
     transition: .3s;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.8);
 }
 .button:hover{
     filter:saturate(1.9);

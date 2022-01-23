@@ -10,32 +10,45 @@ export default function TimePicker({onSubmit,onClose}) {
   const [selected, setSelect] = useState(false);
   const [activeHour, setActiveHour] = useState();
   const [activeMinute, setActiveMinute] = useState(0);
+  const [acumulado, setAcumulado] = useState(0);
 
 
   useEffect(() => {
     if (activeHour || activeHour===0) {
       setHour(
-        activeHour.toString().length == 1
-          ? "0" + activeHour.toString()
-          : activeHour.toString()
+        (activeHour+acumulado).toString().length == 1
+          ? "0" + activeHour+acumulado
+          : activeHour+acumulado
       );
       setSelect(true);
+      setAcumulado(acumulado+activeHour)
     }
   }, [activeHour]);
+  useEffect(()=>{
+    setHour(acumulado)
+  },[acumulado])
   useEffect(() => {
     setMinute(
       activeMinute.toString().length == 1
-        ? "0" + activeMinute.toString()
-        : activeMinute.toString()
-    );
+      ? "0" + activeMinute.toString()
+      : activeMinute.toString()
+      );
   }, [activeMinute]);
   return (
    
     <div className="timePicker">
       <div className="time">
+        <div className="less24" onClick={()=>{
+          if(acumulado>=24){
+            setAcumulado(acumulado-24)
+          }
+        }}><h2>-</h2></div>
         <h1>
           {hour ? hour : "00"}:{minute}
         </h1>
+        <div className="plus24" onClick={()=>
+          setAcumulado(acumulado+24)
+        }><h2>+</h2></div>
       </div>
       <div className="picker">
         <div className="center"></div>

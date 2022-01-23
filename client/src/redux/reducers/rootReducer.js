@@ -7,7 +7,7 @@ import {
   ORDER_COUNTRIES,
   SEARCH,
   ERROR,
-  TOGGLE_APIS
+  TOGGLE_APIS,
 } from "../actions/countryAction";
 const initialState = {
   countries: [],
@@ -15,7 +15,9 @@ const initialState = {
   results: [],
   activities: [],
   error:null,
-  APIenabled:true
+  APIenabled:false,
+  isLog:false,
+  user:{}
 };
 
 
@@ -115,6 +117,7 @@ export default function rootReducer(state = initialState, action) {
         APIenabled:!state.APIenabled
       }
     }
+   
     default:
       return initialState;
   }

@@ -2,10 +2,11 @@ import React, { useEffect,useState } from "react";
 import { useRef } from "react";
 import male from "../../assets/icons/face_blue.svg";
 import female from "../../assets/icons/face_red.svg";
+import whiteFace from '../../assets/icons/faceWhite.png'
 import "./Density.css";
 
 export default function Density({ area, pop }) {
-  let length=Math.ceil(pop / area)>5000?5000:Math.ceil(pop / area)
+  let length=Math.ceil(pop / area)>4000?4000:Math.ceil(pop / area)
   return (
     <div  className="boxDensity">
       <div className="boxInBox">
@@ -20,10 +21,10 @@ export default function Density({ area, pop }) {
           return (
             <img
               className="littlePerson"
-              src={gender}
+              src={whiteFace}
               id={i+"person"}
               key={i}
-              style={{ top: top + "%", left: left + "%", position: "absolute",animationDelay: delay+"s",animationDuration:Math.ceil(pop/area)>5000?0+"s":3+"s",animationName:Math.ceil(pop/area)>5000?" ":"moving"}}
+              style={{top: top + "%", left: left + "%", position: "absolute",animationDelay: delay+"s",animationDuration:Math.ceil(pop/area)>4000?0+"s":3+"s",animationName:Math.ceil(pop/area)>4000?" ":"moving"}}
               alt="little person"
             />
           );

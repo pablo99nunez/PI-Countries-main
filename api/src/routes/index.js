@@ -1,7 +1,8 @@
 const { Router } = require('express');
-const {conn,Country,Activity} =require("../db")
+const {conn,Country,Activity,User} =require("../db")
 const {Op} = require("sequelize")
-const axios=require("axios").default
+const axios=require("axios").default;
+
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -167,6 +168,8 @@ router.get("/activity",async(req,res)=>{
     res.json(actividades.map(e=>e.name))
     
 })
+
+
 
 
 module.exports = router;

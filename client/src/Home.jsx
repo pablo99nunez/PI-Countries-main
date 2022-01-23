@@ -35,6 +35,9 @@ export default function Home() {
       setIsLoading(false);
     }
   }, [countries]);
+  
+
+  
   return (
     <div className="home">
       <Nav setPage={setPage}></Nav>

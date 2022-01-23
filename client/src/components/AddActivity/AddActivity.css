@@ -52,3 +52,19 @@
     bottom: 1rem;
     right: 1rem;
 }
+@media (max-width:1000px){
+    .activityPage .form{
+        grid-template-columns: 1fr;
+    }
+    .titlePage{
+        position:relative
+    }
+    .activityPage{
+        gap:1rem;
+        height: auto;
+    }
+    .botonesActivity{
+        justify-self: flex-end;
+        position: relative;
+    }
+}

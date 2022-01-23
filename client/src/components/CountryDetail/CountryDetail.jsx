@@ -38,7 +38,7 @@ export default function CountryDetail() {
       <Link to="/home" className="goBack">
         <h1>Patriam.</h1>
       </Link>
-      <div className="countryDetail" style={!APIenabled?{backgroundColor:getRandomColor()}:{}}>
+      <div className="countryDetail" >
         {country.landscape && APIenabled? (
           <img className="countryBack" src={country.landscape} alt="" />
         ) : (
@@ -46,7 +46,7 @@ export default function CountryDetail() {
         )}
         <div className="info">
           <img src={country.image} alt="bandera" />
-          <div>
+          <div className="infoText">
             <h1>{country.name}</h1>
             <h2>{country.region}</h2>
           </div>
@@ -72,7 +72,7 @@ export default function CountryDetail() {
             {!country.activities?.slice(0)[0] &&
             <>
              <h2>No hay actividades disponibles</h2>
-             <Button onClick={()=>navigate("/add/"+country.name)} value="Agregar actividad"></Button>
+             <Button  color="#2a0" onClick={()=>navigate("/add/"+country.name)} value="Agregar actividad"></Button>
             </>
              }
         </div>

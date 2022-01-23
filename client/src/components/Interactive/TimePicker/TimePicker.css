@@ -18,10 +18,30 @@
 .time{
     padding:1rem;
     background: #232323;
+    position:relative;
     color:white;
+    user-select: none;
     margin:.5rem;
     border-radius: 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.less24, .plus24{
+    position:absolute;
+    top:calc(50% - 1rem);
+    height: 1rem;
+    color:#232323;
+    cursor:pointer;
+    transition: .2s;
+    user-select: none;
+}
+.less24:hover, .plus24:hover{
+    color:aqua;
+}
+.less24{
+    left:-20px;
+}
+.plus24{
+    right:-20px;
 }
 .picker{
     position:relative;
@@ -78,6 +98,13 @@
     transform: scale(1.05);
 }
 
+
+
+
+
+
+
+
 @keyframes appearWatch {
     from{
         opacity:0
@@ -86,6 +113,9 @@
         opacity: 1;
     }
 }
+
+
+
 @keyframes round {
     from{
         transform: rotateZ(360deg);

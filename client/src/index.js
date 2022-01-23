@@ -24,6 +24,7 @@ ReactDOM.render(
           <Route path="/add/:pais" element={<AddActivity/>}/>
           <Route path="/:id" element={<CountryDetail />}/>
           <Route path="/test" element={<Test />}/>
+          
            
         </Routes>
       </Provider>

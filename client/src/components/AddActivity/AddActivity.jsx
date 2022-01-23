@@ -72,9 +72,9 @@ export default function AddActivity() {
     );
     dispatch(getCountries());
     setInput({
+      ...input,
       name: "",
       duration: "",
-      IDs: [],
       difficulty: 1,
     });
   }
@@ -210,7 +210,7 @@ export default function AddActivity() {
             type="submit"
             onClick={() => {
               preSubmit();
-              fetch("http://localhost:3001/activity", {
+              fetch(`http://${window.location.hostname}:3001/activity`, {
                 method: "post",
                 headers: {
                   "Content-Type": "application/json",
@@ -227,7 +227,7 @@ export default function AddActivity() {
                   console.log(e);
                   setCreated({
                     type: "warningType",
-                    value: "Ha ocurrido un error",
+                    value: "Ha ocurrido un error\n"+e,
                   });
                 });
             }}
@@ -243,7 +243,7 @@ export default function AddActivity() {
                   navigate("/home");
                 },
                 () => {
-                  window.location.reload();
+                  created.value=""
                 },
               ]}
             />
