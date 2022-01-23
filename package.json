@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "express":"*",
-    "body-parser":"*"
+    "body-parser":"*",
+    "cookie-parser":"*"
   },
   "author": "",
   "license": "ISC",
