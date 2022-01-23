@@ -5,7 +5,7 @@ const axios=require("axios").default;
 const path = require('path')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const root=""
+
 const router = Router();
 
 // Configurar los routers
@@ -82,7 +82,7 @@ async function postPost(options){
 router.get("/countries/:idPais",async (req,res)=>{
     
     if(!await Country.findByPk("ARG")){
-        await axios.get(`https://${window.location.hostname}:3001/countries`)
+        await axios.get(`https://${window.location.hostname}:${process.env.PORT || 3001}/countries`)
     }
     try {
         const country=await Country.findByPk(req.params.idPais,{include:Activity})

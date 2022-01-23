@@ -9,11 +9,11 @@ export const TOGGLE_APIS = "TOGGLE_APIS";
 
 
 const hostname = window.location.hostname;
+const url=`http${hostname=="localhost"?'':"s"}://${hostname=="localhost"?hostname+":5000":hostname}`
 export function getCountries() {
-  const url=`https://${hostname}:3001/countries`
-  console.log(url)
+  console.log(url,process.env.PORT)
   return function (dispatch) {
-    return fetch(url).then((res) =>
+    return fetch(url+'/countries').then((res) =>
       res.json().then((payload) => {
         dispatch({ type: GET_COUNTRIES, payload });
       })
@@ -23,7 +23,7 @@ export function getCountries() {
 export function getCountry(payload) {
   return function (dispatch) {
     if (payload != undefined) {
-      return fetch(`https://${hostname}:3001/countries/` + payload).then((res) =>
+      return fetch(`${url}/countries/` + payload).then((res) =>
         res
           .json()
           .then((payload) => {
