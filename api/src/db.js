@@ -9,6 +9,10 @@ const {
 const sequelize = new Sequelize(`postgres://rvnxbkvtrlqpgm:ea33749c8033e423dbd03a42c066efd8e41442e16da25805dbbe70db39aaea15@ec2-3-227-15-75.compute-1.amazonaws.com:5432/dbaetmpb9thqrg`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: true
+}
 });
 const basename = path.basename(__filename);
 
