@@ -10,6 +10,7 @@ export const TOGGLE_APIS = "TOGGLE_APIS";
 
 const url='https://patriam-app.herokuapp.com'
 
+
 export function getCountries() {
   console.log(url)
   return function (dispatch) {

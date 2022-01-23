@@ -10,12 +10,8 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get('/',(req,res)=>{
-    res.sendFile(path.resolve(__dirname+"/../../../client/build/index.html"))
-})
-router.get("/home",(req,res)=>{
-    res.redirect("/")
-})
+
+
     
 router.get("/countries",async (req,res)=>{
     if(req.query.name){
@@ -174,10 +170,6 @@ router.get("/activity",async(req,res)=>{
     const actividades=await Activity.findAll({})
     res.json(actividades.map(e=>e.name))
     
-})
-
-router.get("/:id",(req,res)=>{
-    res.redirect("/")
 })
 
 
