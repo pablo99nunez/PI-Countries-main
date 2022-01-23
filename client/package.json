@@ -41,7 +41,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://whispering-thicket-59128.herokuapp.com/:3001",
   "devDependencies": {
     "mini-css-extract-plugin": "2.4.5"
   }
