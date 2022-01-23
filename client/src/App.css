@@ -40,6 +40,7 @@
   transform: scale(1.2);
   transition:all 300ms ease-in-out;
 }
+
 .title-cont{
   position:relative;
   overflow: hidden;
@@ -63,8 +64,22 @@
 
 .leave{
   animation: change 300ms ease reverse;
-  
 }
+
+.loginAndRegister{
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  gap:1rem;
+  font-size: .3em;
+  color:#aaa;
+  cursor: pointer;
+  user-select: none;
+}
+.loginAndRegister h3:hover{
+  color:#fff;
+}
+
 .toggleApi{
   position:absolute;
   bottom:10px;
@@ -103,5 +118,11 @@
   to{
     transform:translateY(0px);
     opacity:1;
+  }
+}
+
+@media (max-width:1000px){
+  .title{
+    font-size: larger ;
   }
 }
