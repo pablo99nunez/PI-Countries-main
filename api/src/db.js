@@ -11,7 +11,10 @@ const sequelize = new Sequelize(`postgres://rvnxbkvtrlqpgm:ea33749c8033e423dbd03
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   dialect: "postgres",
   dialectOptions: {
-    ssl: true
+    ssl: {
+      require:true,
+      rejectUnauthorized: false
+    }
 }
 });
 const basename = path.basename(__filename);
