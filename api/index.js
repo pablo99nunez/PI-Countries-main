@@ -18,12 +18,22 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
+const express = require('express')
+const path = require('path')
 const { conn,Country } = require('./src/db.js');
 
+const port=process.env.PORT || 3001
+
+if(process.env.NODE_ENV=="production"){
+  server.use(express.static('../client/build'))
+  server.get("*",(req,res)=>{
+    res.sendFile(path.resolve("../client","build","index.html"))
+  })
+}
 
 // Syncing all the models at once.
 conn.sync().then(() => {
-  server.listen(3001, async () => {
+  server.listen(port, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     
   });

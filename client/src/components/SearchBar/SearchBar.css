@@ -10,6 +10,7 @@
     position: relative;
     z-index: 20000;
     padding-left: 20px;
+    
 }
 .searchBar .inputSearch{
     width: 400px;
@@ -22,7 +23,7 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
-   
+    transform-origin:left center
 }
 .searchBar input{
     height: 70%;

@@ -41,5 +41,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "devDependencies": {
+    "mini-css-extract-plugin": "2.4.5"
+  }
 }

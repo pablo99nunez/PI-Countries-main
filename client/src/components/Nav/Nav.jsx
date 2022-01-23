@@ -4,13 +4,11 @@ import SearchBar from '../SearchBar/SearchBar'
 import filterIco from '../../assets/icons/filter.svg'
 import sortIco from '../../assets/icons/sort.svg'
 import postIco from '../../assets/icons/post.svg'
-import Settings from '../../assets/icons/settings.svg'
-import logoutIco from '../../assets/icons/logout.svg'
+
 import FilterMenu from '../DropMenus/FilterMenu/FilterMenu'
 import SortMenu from '../DropMenus/SortMenu/SortMenu'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {logout} from '../../redux/actions/countryAction'
 
 export default function Nav({setPage}) {
     const [filter, setFilter] = useState(false)

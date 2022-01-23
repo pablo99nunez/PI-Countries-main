@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.88c63663.css",
+    "main.js": "/static/js/main.525819e3.js",
+    "static/js/377.3e5a2daf.chunk.js": "/static/js/377.3e5a2daf.chunk.js",
+    "static/media/worldSpin.gif": "/static/media/worldSpin.1ba1f65a4e05b2ef76f4.gif",
+    "static/media/scrollbar.png": "/static/media/scrollbar.271ca5bc00a947378bba.png",
+    "static/media/background.jpg": "/static/media/background.840aa4eb1a84f1814009.jpg",
+    "static/media/population.svg": "/static/media/population.774b014aca49b5bb7684b766455ccbae.svg",
+    "static/media/face_blue.svg": "/static/media/face_blue.a79b7130cba5453084d3ca45d06b3b69.svg",
+    "static/media/face_red.svg": "/static/media/face_red.a79b7130cba5453084d3ca45d06b3b69.svg",
+    "static/media/travel_explore_black_48dp.svg": "/static/media/travel_explore_black_48dp.6549718a151a7835f971793c0c3f54a1.svg",
+    "index.html": "/index.html",
+    "static/media/post.svg": "/static/media/post.9d533f78ad8f67ea236a808e0573d94f.svg",
+    "static/media/timer.svg": "/static/media/timer.565d48cead69cdadf0954543736762f5.svg",
+    "static/media/alpha.svg": "/static/media/alpha.ede2e9ab5d8621104260aa91a9f565a8.svg",
+    "static/media/filter.svg": "/static/media/filter.2f95fb01c535b95bd2be877191aa2744.svg",
+    "static/media/arrow.svg": "/static/media/arrow.2f4cbb88620b5622d52f1db73bbc1750.svg",
+    "static/media/ascending.svg": "/static/media/ascending.588ab402213cf530669c6f0038d10c13.svg",
+    "static/media/descending.svg": "/static/media/descending.e1d0662bd1b2bb5612d48f3f28268957.svg",
+    "static/media/sort.svg": "/static/media/sort.1b25bf495d7bf38aa927f2c2c40883ad.svg",
+    "static/media/home_black_24dp.svg": "/static/media/home_black_24dp.ef03a0b52c9cd7ebe9b1465d6dce7d72.svg",
+    "main.88c63663.css.map": "/static/css/main.88c63663.css.map",
+    "main.525819e3.js.map": "/static/js/main.525819e3.js.map",
+    "377.3e5a2daf.chunk.js.map": "/static/js/377.3e5a2daf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.88c63663.css",
+    "static/js/main.525819e3.js"
+  ]
+}
