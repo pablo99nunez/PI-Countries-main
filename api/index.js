@@ -25,7 +25,7 @@ const { conn,Country } = require('./src/db.js');
 const port=process.env.PORT || 3001
 
 //if(process.env.NODE_ENV=="production"){
-  server.use(express.static(__dirname.slice(0,__dirname.length-4)+'/client/build'))
+ // server.use(express.static(__dirname.slice(0,__dirname.length-4)+'/client/build'))
 
 
 // Syncing all the models at once.
