@@ -1,20 +1,8 @@
 {
-  "name": "pi-countries-main",
-  "version": "1.0.0",
-  "description": "<p align='left'>     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img> </p>",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd client && npm run build && cd .. && cd api && node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pablo99nunez/PI-Countries-main.git"
-  },
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "express":"*",
-    "body-parser":"*",
-    "cookie-parser":"*",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.1",
     "@testing-library/user-event": "^12.2.2",
@@ -27,20 +15,35 @@
     "react-thunk": "^1.0.0",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
-    "web-vitals": "^0.2.4",
-    "axios": "^0.24.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "ioredis": "^4.19.2",
-    "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.10.0",
-    "pg": "^8.5.1",
-    "sequelize": "^6.3.5"
+    "serve": "^13.0.2",
+    "web-vitals": "^0.2.4"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pablo99nunez/PI-Countries-main/issues"
+  "scripts": {
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "heroku-postbuild":"npm run build"
   },
-  "homepage": "https://github.com/pablo99nunez/PI-Countries-main#readme"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "mini-css-extract-plugin": "2.4.5"
+  }
 }
