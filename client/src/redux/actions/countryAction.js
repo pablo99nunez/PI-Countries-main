@@ -11,7 +11,7 @@ export const TOGGLE_APIS = "TOGGLE_APIS";
 const hostname = window.location.hostname;
 export function getCountries() {
   return function (dispatch) {
-    return fetch(`http://${hostname}:3001/countries`).then((res) =>
+    return fetch(`https://${hostname}:3001/countries`).then((res) =>
       res.json().then((payload) => {
         dispatch({ type: GET_COUNTRIES, payload });
       })
