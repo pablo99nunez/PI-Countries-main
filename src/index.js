@@ -11,6 +11,7 @@ import App from './App';
 import Home from './Home'
 import AddActivity from './components/AddActivity/AddActivity';
 import CountryDetail from './components/CountryDetail/CountryDetail';
+import ErrorPage from './components/404/ErrorPage';
 
 
 ReactDOM.render(
@@ -24,7 +25,7 @@ ReactDOM.render(
           <Route path="/add/:pais" element={<AddActivity/>}/>
           <Route path="/:id" element={<CountryDetail />}/>
           <Route path="/test" element={<Test />}/>
-          
+          <Route path={"/*"} element={<ErrorPage/>}></Route>
            
         </Routes>
       </Provider>

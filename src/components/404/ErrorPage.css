@@ -1,0 +1,37 @@
+.errorPage{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    color:white;
+    background-image: url('../../assets/darkspace.jpg');
+    background-size: cover;
+    backdrop-filter: none;
+    overflow: hidden;
+}
+.contImgError{
+    overflow: hidden;
+    position: absolute;
+    bottom: -10px;
+    left:0;
+    
+}
+
+.contImgError img{
+    width: 100%;
+    -webkit-user-drag: none;
+}
+.textError{
+    z-index: 100;
+    margin: 1rem;
+    font-size:1.5rem;
+    text-align: center;
+}
+
+
+@media (max-width:1000px){
+    .errorPage{
+        flex-direction: column-reverse;
+    }
+}
