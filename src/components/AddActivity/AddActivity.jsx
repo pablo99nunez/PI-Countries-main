@@ -22,6 +22,7 @@ export default function AddActivity() {
   const activities = useSelector((state) => state.activities);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const url=`https://patriam-back.herokuapp.com`
 
   const [errors, setErrors] = useState({
     name: "",
@@ -130,8 +131,8 @@ export default function AddActivity() {
   useEffect(() => {
     setInput({ ...input, duration });
   }, [duration]);
-  let hostname=window.location.hostname
-  const url=`http${hostname=="localhost"?'':"s"}://${hostname=="localhost"?hostname+":5000":hostname}`
+  
+  
   return (
     <div className="activityPage">
       <h1 className="titlePage">Añadir actividad turistica.</h1>
