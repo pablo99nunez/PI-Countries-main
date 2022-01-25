@@ -8,6 +8,8 @@ import "./Pagination.css";
 export default function Pagination({ content, per_page }) {
   const [page, _setPage] = useState(0);
   const [active, setActive] = useState(0);
+  const [isLearn, setLearn] = useState(false);
+  const [isMobile, setMobile] = useState(false);
   const pageRef = useRef(page)
   const pagination = useRef(null)
   const setPage=(e)=>{
@@ -17,6 +19,7 @@ export default function Pagination({ content, per_page }) {
 
   useEffect(()=>{
     swipe()
+    if(window.visualViewport.width<=1000) setMobile(true)
   },[])
   useEffect(()=>{
       setPage(0)
@@ -26,7 +29,7 @@ export default function Pagination({ content, per_page }) {
   
   function swipe(){
     let startX,startY,offsetX=50,offsetY=30,endX,endY
-    if(window.visualViewport.width<=1000){
+    if(isMobile){
       pagination.current.addEventListener('touchstart',e=>{
         startX=e.touches[0].clientX
         startY=e.touches[0].clientY
@@ -42,7 +45,7 @@ export default function Pagination({ content, per_page }) {
         if(endX<startX-offsetX && endY<startY+offsetY && endY>startY-offsetY){
           console.log("Swipe left",pageRef.current,content.length)
           if(pageRef.current < content.length - per_page){
-            
+            setLearn(true)
             setActive(active+1) 
             setPage(pageRef.current+per_page)
             console.log("After left",pageRef.current,content.length)
@@ -109,6 +112,14 @@ export default function Pagination({ content, per_page }) {
         null
         }
       </div>
+      {!isLearn && isMobile?
+      <div className="swipeLeft">
+        <div className="swipeContent">
+          <img src={arrow} alt="" />
+          <h2>Swipe Left</h2>
+        </div>
+      </div>:null 
+    }
     </div>
   );
 }

@@ -85,6 +85,34 @@
 .active{
     background-color: #BBB;
 }
+.swipeLeft{
+    width:100vw;
+    height: 3rem;
+    background:linear-gradient(transparent,black,black);
+    position: sticky;
+    z-index: 50000;
+    bottom: 0;
+    left:0;
+    color:white;
+    text-align: center;
+}
+.swipeLeft .swipeContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce .5s ease-in-out infinite;
+    animation-direction: alternate;
+}
+.swipeLeft img{
+    transform: rotateZ(180deg);
+
+}
+@keyframes bounce{
+    from{
+        transform: scale(1.2);
+    }
+}
+
 @media (max-width:1000px) {
    .contentWrapper{
         grid-template-columns: 1fr;
