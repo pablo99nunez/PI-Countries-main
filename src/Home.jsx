@@ -18,6 +18,7 @@ export default function Home() {
   const countries = useSelector((state) => state.countries);
   const results = useSelector((state) => state.results);
   const [isLoading, setIsLoading] = useState(true);
+ 
   const [page, setPage] = useState(0);
 
   const dispatch = useDispatch();
@@ -62,7 +63,9 @@ export default function Home() {
           >
             No hay resultados
           </h1>
-        )}
+          )
+          
+          }
       </div>
     </div>
   );
