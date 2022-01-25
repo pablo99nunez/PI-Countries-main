@@ -12,7 +12,6 @@ const url='https://patriam-back.herokuapp.com'
 
 
 export function getCountries() {
-  console.log(url)
   return function (dispatch) {
     return fetch(url+'/countries').then((res) =>
       res.json().then((payload) => {

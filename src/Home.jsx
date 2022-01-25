@@ -26,8 +26,8 @@ export default function Home() {
     dispatch(getCountry());
     if (!countries[0]) {
       await dispatch(getCountries());
-      dispatch(orderCountries({ pob: "desc" }));
     }
+    dispatch(orderCountries({ pob: "desc" }));
     
   }, []);
   

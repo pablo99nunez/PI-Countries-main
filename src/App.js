@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import Loading from './components/Loading';
 import { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries, toggleApis } from './redux/actions/countryAction';
+import { getCountries, toggleApis,orderCountries } from './redux/actions/countryAction';
 import { useNavigate } from 'react-router';
 
 
@@ -15,8 +15,9 @@ function App() {
   const APIenabled = useSelector(state=>state.APIenabled)
   const navigate=useNavigate()
   const [changeTitle, setChangeTitle] = useState("")
-  useEffect(()=>{
-    dispatch(getCountries())
+  useEffect(async()=>{
+    await dispatch(getCountries())
+   
   },[])
   
   return (
