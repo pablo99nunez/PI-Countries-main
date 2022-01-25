@@ -19,15 +19,16 @@ export default function Pagination({ content, per_page }) {
 
   useEffect(()=>{
     swipe()
-  },[])
+  },[swipe])
   useEffect(()=>{
       setPage(0)
       setActive(0)
   },[content])
+  
 
   
   function swipe(){
-    let startX,startY,offsetX=50,offsetY=30,endX,endY
+    let startX,startY,offsetX=50,offsetY=50,endX,endY
     if(window.visualViewport.width<=1000){
       setMobile(true)
       pagination.current.addEventListener('touchstart',e=>{
@@ -92,7 +93,7 @@ export default function Pagination({ content, per_page }) {
         </span>
       </div>
       <div className="pageIndex">
-        {window.visualViewport.width>1000?
+      {window.visualViewport.width>1000?
           Array.apply(null, { length: Math.ceil(content.length / per_page) })
           .map((e, i) => {
 
@@ -108,10 +109,18 @@ export default function Pagination({ content, per_page }) {
                 );
             }
           )
+      
         :
-        null
-        }
-      </div>
+        <Select opt={
+          Array.apply(null, { length: Math.ceil(content.length / per_page) })
+          .map((e, i) => i)
+          }
+          onSelect={(e)=>{
+            setActive(e);
+            setPage(e * per_page);}}
+            />
+          }
+        </div>
       {!isLearn && isMobile?
       <div className="swipeLeft">
         <div className="swipeContent">

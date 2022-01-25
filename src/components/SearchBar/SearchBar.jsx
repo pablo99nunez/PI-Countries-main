@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { search } from "../../redux/actions/countryAction";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import icoSearch from "../../assets/icons/travel_explore_black_48dp.svg";
 import "./SearchBar.css";
 import { useEffect,useRef } from "react";
@@ -16,7 +16,7 @@ export default function SearchBar() {
         console.log(input)
         input.current.focus()
       }
-  },[active])
+  },[active,dispatch])
   return (
     <div className="searchBar">
       <img
@@ -28,7 +28,7 @@ export default function SearchBar() {
         className="inputSearch"
         style={{
             /* width: active ? 400 : 0, */
-            transform:`${active?'scale(1)':"scale(0)"} ${window.visualViewport.width<1000?'translate(-200px,50px)':""}`
+            transform:`${active?'scale(1,1)':"scale(0,1)"} ${window.visualViewport.width<1000?'translate(-200px,50px)':""}`
         }}>
 
         <input

@@ -20,7 +20,7 @@ a{
 body{
   min-height: 100vh;
   overflow-x: hidden;
-  
+  user-zoom: none;
   font-family: 'Playfair Display',serif;
 }
 input{

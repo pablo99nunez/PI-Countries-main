@@ -103,6 +103,7 @@
     justify-content: center;
     animation: bounce .5s ease-in-out infinite;
     animation-direction: alternate;
+    
 }
 .swipeLeft img{
     transform: rotateZ(180deg);
