@@ -1,8 +1,6 @@
 .boxDensity{
     position:relative;
-    background-color: #111;
     border-radius: 20px;
-    box-shadow: inset 0px 0px 100px black, inset 0 -20px 50px black;
     border: 2px solid #aaa;
     display: flex;
     align-items: center;
@@ -22,6 +20,8 @@
     right: 0;
 }
 .littlePerson{
+    width: 1.3rem;
+    position: absolute;
     animation: moving 3s ease-in-out infinite;
     animation-direction: alternate;
     filter: brightness(0) saturate(100%) invert(63%) sepia(50%) saturate(7487%) hue-rotate(74deg) brightness(99%) contrast(108%);
