@@ -63,9 +63,6 @@
   transform: translateY(-200px);
 }
 
-.homeIco:hover body{
-  background:red;
-}
 
 .loginAndRegister{
   display: flex;
@@ -91,14 +88,6 @@
   gap: 10px;
 }
 
-@keyframes change {
-  from{
-    transform:translateY(0)
-  }
-  to{
-    transform: translateY(-200px);
-  }
-}
 
 
 @keyframes floatUp {
