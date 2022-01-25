@@ -19,7 +19,6 @@ export default function Pagination({ content, per_page }) {
 
   useEffect(()=>{
     swipe()
-    if(window.visualViewport.width<=1000) setMobile(true)
   },[])
   useEffect(()=>{
       setPage(0)
@@ -29,7 +28,8 @@ export default function Pagination({ content, per_page }) {
   
   function swipe(){
     let startX,startY,offsetX=50,offsetY=30,endX,endY
-    if(isMobile){
+    if(window.visualViewport.width<=1000){
+      setMobile(true)
       pagination.current.addEventListener('touchstart',e=>{
         startX=e.touches[0].clientX
         startY=e.touches[0].clientY
