@@ -48,6 +48,7 @@
 }
 .title{
   position: relative;
+  transition: transform 300ms ease;
 }
 .title::after{
   position: absolute;
@@ -59,11 +60,11 @@
   aspect-ratio: 1/1;
 }
 .change{
-  animation: change 300ms ease forwards;
+  transform: translateY(-200px);
 }
 
-.leave{
-  animation: change 300ms ease reverse;
+.homeIco:hover body{
+  background:red;
 }
 
 .loginAndRegister{
