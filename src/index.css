@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@font-face {
+  font-family: 'Playfair display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/Playfair-display.woff2') format('woff2');
+}
 
 *{
   padding:0;
