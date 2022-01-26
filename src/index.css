@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Playfair display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/Playfair-display.woff2') format('woff2');
+}
+
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+  text-decoration: none;
+  user-zoom: none;
+}
+a{
+  color:inherit
+}
+
+body{
+  min-height: 100vh;
+  overflow-x: hidden;
+  user-zoom: none;
+  font-family: 'Playfair Display',serif;
+}
+input{
+  font-family: 'Playfair Display',sans-serif;
+
+}
+input:focus{
+  outline: none;
+}
