@@ -44,19 +44,15 @@ export default function Pagination({ content, per_page }) {
        
         
         if(endX<startX-offsetX && endY<startY+offsetY && endY>startY-offsetY){
-          console.log("Swipe left",pageRef.current,content.length)
           if(pageRef.current < content.length - per_page){
             setLearn(true)
             setActive(active+1) 
             setPage(pageRef.current+per_page)
-            console.log("After left",pageRef.current,content.length)
           } 
         }else if(endY>startX-offsetX && endY<startY+offsetY && endY>startY-offsetY){
-          console.log("Swipe right",pageRef.current,content.length)
-          if(pageRef.current>=per_page){
+        if(pageRef.current>=per_page){
             setActive(active-1) 
             setPage(pageRef.current-per_page)
-            console.log("After right",pageRef.current,content.length)
           }
         }
        
