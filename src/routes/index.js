@@ -139,11 +139,11 @@ router.post("/activity",async (req,res)=>{
             }
           };
         let image=await postPost(options).catch(err=>console.error(err))
-        console.log(image)
+       
         const act=await Activity.create({name,difficulty,duration,season,image})
         
         act.setCountries(IDs)
-        console.log(IDs)
+        
         res.status(201).json({name,difficulty,duration,season,image})
     } catch (error) {
         console.log(error)
