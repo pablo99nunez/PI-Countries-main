@@ -29,7 +29,7 @@ export default function Select({ opt,onSelect=()=>{}}) {
         
           {opt.map((e,i) => {
             return (
-              <div key={e} className="option" name={e} onClick={(e)=>setSelected(opt[i])}>
+              <div key={e} className="option" name={e} id={e+"Opt"} onClick={(e)=>setSelected(opt[i])}>
                 {e}
               </div>
             );

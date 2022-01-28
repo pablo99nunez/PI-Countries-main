@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -L",
-    "start":"node index.js",
-    "test": "mocha -w ./tests/**/*.spec.js"
+    "start": "node index.js",
+    "test": "mocha -w ./tests/**/*.spec.js --timeout 10000"
   },
   "author": "Henry",
   "license": "ISC",

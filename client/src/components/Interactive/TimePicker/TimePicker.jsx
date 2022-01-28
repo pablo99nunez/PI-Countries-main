@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./TimePicker.css";
 import Button from "../Button/Button";
 
-export default function TimePicker({onSubmit,onClose}) {
+export default function TimePicker({onSubmit,onClose=()=>{}}) {
   const [hour, setHour] = useState("00");
   const [minute, setMinute] = useState("00");
   const [selected, setSelect] = useState(false);

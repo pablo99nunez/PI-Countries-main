@@ -242,7 +242,7 @@ export default function AddActivity() {
               buttons={["Volver a Home", "Agregar otra"]}
               onClick={[
                 () => {
-                  navigate("/home");
+                  window.location.href='/home';
                 },
                 () => {
                   created.value=""
