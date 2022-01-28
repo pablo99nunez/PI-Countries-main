@@ -32,7 +32,11 @@
 }
 .infoActivityBack{
     position:absolute;
-    color:black
+    color:black;
+    transform: rotateY(180deg);
+    background-color: white;
+    flex-direction: column;
+    gap:.2rem;
 }
 .infoActivityBack, .infoActivityFront{
     object-fit: cover;
@@ -47,9 +51,3 @@
     cursor: default;
 }
 
-
-.infoActivityBack{
-    transform: rotateY(180deg);
-    background-color: white;
-    flex-direction: column;
-}
