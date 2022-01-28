@@ -24,18 +24,11 @@ export function getCountry(payload) {
   return function (dispatch) {
     if (payload != undefined) {
       return fetch(`${url}/countries/` + payload).then((res) =>
-        res
-          .json()
+        res.json()
           .then((payload) => {
             dispatch({ type: GET_COUNTRY, payload });
           })
-          .catch((e) =>
-            dispatch({
-              type: ERROR,
-              payload: "No se encontró la pagina buscada",
-            })
           )
-      );
     }
   };
 }

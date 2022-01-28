@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { getCountry } from "../../redux/actions/countryAction";
+import { getCountries, getCountry } from "../../redux/actions/countryAction";
 import "./CountryDetail.css";
 import Density from "../Density/Density";
 import { Link } from "react-router-dom";
@@ -10,11 +10,12 @@ import { useState } from "react";
 import Button from "../Interactive/Button/Button";
 import { useNavigate } from "react-router";
 import Loading from "../Loading";
-import { getRandomColor } from "../RandomColor/RandomColor";
+
 
 export default function CountryDetail() {
   let { id } = useParams();
   const dispatch = useDispatch();
+  const countries=useSelector(state=>state.countries)
   const error=useSelector(state=>state.error)
   const [loading, setLoading] = useState(true)
   const country = useSelector((state) => state.country);
@@ -22,7 +23,9 @@ export default function CountryDetail() {
   const navigate=useNavigate()
 
   useEffect(() => {
-    dispatch(getCountry(id));
+    
+    if(countries.find((e)=>e.id==id)) dispatch(getCountry(id));
+    else navigate("/error")
   }, []);
   useEffect(()=>{
     if(country.image){

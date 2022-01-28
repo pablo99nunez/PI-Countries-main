@@ -21,11 +21,12 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App/>}/>
           <Route path="/home" element={<Home/>}/>
-          <Route path="/add" element={<AddActivity/>}/>
-          <Route path="/add/:pais" element={<AddActivity/>}/>
-          <Route path="/:id" element={<CountryDetail />}/>
+          <Route path="/add" element={<AddActivity/>}>
+            <Route path=":pais" element={<AddActivity/>}/>
+          </Route>
+          <Route path="/paises/:id" element={<CountryDetail />}/>
           <Route path="/test" element={<Test />}/>
-          <Route path={"/*"} element={<ErrorPage/>}></Route>
+          <Route path={"*"} element={<ErrorPage/>} status={404}></Route>
            
         </Routes>
       </Provider>

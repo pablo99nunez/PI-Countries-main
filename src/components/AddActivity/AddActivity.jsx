@@ -71,6 +71,9 @@ export default function AddActivity() {
         IDs: [...existentIDsActivities, ...input.IDs],
       })
     );
+    
+  }
+  function postSubmit(){
     dispatch(getCountries());
     setInput({
       ...input,
@@ -224,6 +227,7 @@ export default function AddActivity() {
                     type: "infoType",
                     value: "Actividad creada satisfactoriamente",
                   });
+                  postSubmit()
                 })
                 .catch((e) => {
                   console.log(e);
