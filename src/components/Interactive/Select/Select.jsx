@@ -1,40 +1,35 @@
-import React from "react";
-import { useRef } from "react";
-import { useState,useEffect } from "react";
-import "./Select.css";
+import React, { useRef, useState, useEffect } from 'react';
 
-export default function Select({ opt,onSelect=()=>{}}) {
+import './Select.css';
+
+export default function Select ({ opt, onSelect = () => {} }) {
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState(opt[0])
   const select = useRef(null)
   useEffect(() => {
-      onSelect(selected)
-      select.current.scrollTop=0
+    onSelect(selected)
+    select.current.scrollTop = 0
   }, [active])
-  
-  
+
   return (
     <div
-      className={`select ${active?"opened":""}`}
+      className={`select ${active ? 'opened' : ''}`}
       style={{
-        height: active ? (opt.length+1) * 50 : 50,
+        height: active ? (opt.length + 1) * 50 : 50
       }}
-      onClick={()=>setActive(!active)}
+      onClick={() => setActive(!active)}
       ref={select}
     >
-        <div className={`option selected ${active?"active":""}`} name={selected}>{selected}
+        <div className={`option selected ${active ? 'active' : ''}`} name={selected}>{selected}
         <span className="Arrow"></span></div>
-        
 
-        
-          {opt.map((e,i) => {
+          {opt.map((e, i) => {
             return (
-              <div key={e} className="option" name={e} id={e+"Opt"} onClick={(e)=>setSelected(opt[i])}>
+              <div key={e} className="option" name={e} id={e + 'Opt'} onClick={(e) => setSelected(opt[i])}>
                 {e}
               </div>
             );
           })}
-     
 
     </div>
   );

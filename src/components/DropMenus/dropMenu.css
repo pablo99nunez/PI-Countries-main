@@ -11,7 +11,7 @@
     justify-content: center;
     gap:1rem;
     flex-direction: column;
-    z-index:10000;
+    z-index:60000;
 }
 .dropMenu img{
     transition: .3s ease;

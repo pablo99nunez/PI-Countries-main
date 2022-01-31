@@ -5,28 +5,28 @@ import { getHours } from '../SecondsTranslate'
 import DifficultyGraph from '../Interactive/DifficultyGraph/DifficultyGraph'
 import './ActivityCard.css'
 
-export default function ActivityCard({e}) {
-    let duration=`${getHours(e.duration)} horas`
-    const APIenabled=useSelector(state=>state.APIenabled)
-    return (
+export default function ActivityCard ({ e }) {
+  const duration = `${getHours(e.duration)} horas`
+  const APIenabled = useSelector(state => state.APIenabled)
+  return (
         <div className="activityWrap">
 
             <div className='activityCard'>
-                <div className="infoActivityFront" style={!APIenabled?{backgroundColor:getRandomColor()}:{}}>
+                <div className="infoActivityFront" style={!APIenabled ? { backgroundColor: getRandomColor() } : {}}>
 
                     <h1>{e.name.toUpperCase()}</h1>
-                    {APIenabled&& <img src={e.image}  />}
+                    {APIenabled && <img src={e.image} />}
                 </div>
                 <div className='infoActivityBack'>
 
                     <h2>Duracion: {duration}</h2>
                     <div style={{
-                        display:'flex',
-                        alignItems:'flex-end',
-                        background:'inherit',
-                        height: '2rem',
-                        gap:".2rem",
-                        justifyContent:'center'
+                      display: 'flex',
+                      alignItems: 'flex-end',
+                      background: 'inherit',
+                      height: '2rem',
+                      gap: '.2rem',
+                      justifyContent: 'center'
                     }}>
                         <h2>Dificultad: </h2>
                         <DifficultyGraph tier={e.difficulty}/>
@@ -36,5 +36,5 @@ export default function ActivityCard({e}) {
                 </div>
             </div>
         </div>
-    )
+  )
 }

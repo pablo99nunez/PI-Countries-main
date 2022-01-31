@@ -9,7 +9,7 @@ import ActivityCard from "../ActivityCards/ActivityCard";
 import { useState } from "react";
 import Button from "../Interactive/Button/Button";
 import { useNavigate } from "react-router";
-import Loading from "../Loading";
+import Loading from "../Loading/Loading";
 
 
 export default function CountryDetail() {
