@@ -37,7 +37,7 @@ export default function FilterMenu ({ close, setPage }) {
               )
             }}
           >
-            <img className={active == 'asc' ? 'filter-green' : undefined} src={ascending} alt="ascending" />
+            <img className={active === 'asc' ? 'filter-green' : undefined} src={ascending} alt="ascending" />
           </div>
 
           <div
@@ -50,7 +50,7 @@ export default function FilterMenu ({ close, setPage }) {
               )
             }}
             >
-            <img className={active == 'desc' ? 'filter-green' : undefined} src={descending} alt="descending" />
+            <img className={active === 'desc' ? 'filter-green' : undefined} src={descending} alt="descending" />
 
           </div>
               </div>
@@ -70,7 +70,7 @@ export default function FilterMenu ({ close, setPage }) {
               )
             }}
           >
-            <img className={active == 'ascPop' ? 'filter-green' : undefined} src={ascending} alt="descending" />
+            <img className={active === 'ascPop' ? 'filter-green' : undefined} src={ascending} alt="descending" />
           </div>
 
           <div
@@ -83,7 +83,7 @@ export default function FilterMenu ({ close, setPage }) {
               )
             }}
           >
-            <img className={active == 'descPop' ? 'filter-green' : undefined} src={descending} alt="descending" />
+            <img className={active === 'descPop' ? 'filter-green' : undefined} src={descending} alt="descending" />
 
           </div>
         </div>

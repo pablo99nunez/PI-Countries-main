@@ -24,7 +24,7 @@ export default function CountryDetail() {
 
   useEffect(() => {
     
-    if(countries.find((e)=>e.id==id)) dispatch(getCountry(id));
+    if(countries.find((e)=>e.id===id)) dispatch(getCountry(id));
     else navigate("/error")
   }, []);
   useEffect(()=>{
@@ -70,7 +70,7 @@ export default function CountryDetail() {
           <div className="gridActivities">
             {country.activities?.filter((e,i)=>{
               if(country.activities[i+1])
-              return e.name!=country.activities[i+1].name
+              return e.name!==country.activities[i+1].name
               return true
             }).map((e) => {
               return <ActivityCard e={e} />;

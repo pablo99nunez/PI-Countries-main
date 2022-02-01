@@ -20,7 +20,7 @@ export default function Options ({ handle = () => {}, onErase = () => {}, width 
   function handleDelete (e, value) {
     setOpts(oldArray => {
       return oldArray.filter((id) => {
-        return id.key != e
+        return id.key !== e
       })
     })
     onErase(value)
@@ -28,7 +28,7 @@ export default function Options ({ handle = () => {}, onErase = () => {}, width 
 
   function handleInput (e) {
     if (e.target.value) {
-      if (e.key == 'Enter') {
+      if (e.key === 'Enter') {
         const res = handle(e)
 
         if (res) {

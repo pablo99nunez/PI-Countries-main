@@ -20,7 +20,7 @@ export function getCountries () {
 }
 export function getCountry (payload) {
   return function (dispatch) {
-    if (payload != undefined) {
+    if (payload !== undefined) {
       return fetch(`${url}/countries/` + payload).then((res) =>
         res.json()
           .then((payload) => {

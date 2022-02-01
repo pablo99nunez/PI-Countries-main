@@ -10,7 +10,7 @@ export default function SearchBar () {
   const dispatch = useDispatch();
   const input = useRef(null)
   useEffect(() => {
-    if (!active && window.visualViewport.width>1000) dispatch(search(''))
+    if (!active) dispatch(search(''))
     else {
       console.log(input)
       input.current.focus()

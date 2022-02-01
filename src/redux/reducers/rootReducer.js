@@ -52,15 +52,15 @@ export default function rootReducer (state = initialState, action) {
       };
     }
     case FILTER_COUNTRIES: {
-      const continents = action.payload.continent == 'Todos'
+      const continents = action.payload.continent === 'Todos'
         ? state.countries
-        : state.countries.filter((e) => e.region == action.payload.continent)
+        : state.countries.filter((e) => e.region === action.payload.continent)
 
-      const result = action.payload.activity == 'Ninguna'
+      const result = action.payload.activity === 'Ninguna'
         ? continents
-        : action.payload.activity == 'Cualquiera'
+        : action.payload.activity === 'Cualquiera'
           ? continents.filter(e => e.activities[0])
-          : continents.filter(e => e.activities.find(a => a.name == action.payload.activity))
+          : continents.filter(e => e.activities.find(a => a.name === action.payload.activity))
       return {
         ...state,
         results: result
@@ -75,16 +75,16 @@ export default function rootReducer (state = initialState, action) {
         results: founds.sort((a, b) => {
           if (alf) {
             if (a.name < b.name) {
-              return alf == 'asc' ? -1 : 1;
+              return alf === 'asc' ? -1 : 1;
             } else if (a.name > b.name) {
-              return alf == 'asc' ? 1 : -1;
+              return alf === 'asc' ? 1 : -1;
             } else return 0;
           }
           if (pob) {
             if (a.population < b.population) {
-              return pob == 'asc' ? -1 : 1;
+              return pob === 'asc' ? -1 : 1;
             } else if (a.population > b.population) {
-              return pob == 'asc' ? 1 : -1;
+              return pob === 'asc' ? 1 : -1;
             } else return 0;
           }
         })
@@ -92,7 +92,7 @@ export default function rootReducer (state = initialState, action) {
     }
 
     case ADD_ACTIVITY: {
-      const founds = state.countries.filter(e => action.payload.IDs.find(id => e.id == id))
+      const founds = state.countries.filter(e => action.payload.IDs.find(id => e.id === id))
 
       founds.forEach(e => {
         e.activities = e.activities ? [...e.activities, action.payload.name] : [action.payload.name]

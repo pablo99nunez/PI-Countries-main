@@ -14,7 +14,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
   useEffect(() => {
     if (activeHour || activeHour === 0) {
       setHour(
-        (activeHour + acumulado).toString().length == 1
+        (activeHour + acumulado).toString().length === 1
           ? '0' + activeHour + acumulado
           : activeHour + acumulado
       );
@@ -27,7 +27,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
   }, [acumulado])
   useEffect(() => {
     setMinute(
-      activeMinute.toString().length == 1
+      activeMinute.toString().length === 1
         ? '0' + activeMinute.toString()
         : activeMinute.toString()
     );
@@ -64,7 +64,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
           ? (
           <div className="hour">
             <div
-              className={`number ${activeHour == 1 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 1 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(1)}
               style={{ top: '12.5px', right: '44px' }}
             >
@@ -72,7 +72,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
 
             <div
-              className={`number ${activeHour == 2 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 2 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(2)}
               style={{ top: '44px', right: '12.5px' }}
             >
@@ -80,28 +80,28 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
 
             <div
-              className={`number ${activeHour == 3 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 3 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(3)}
               style={{ bottom: '90px', right: '0px' }}
             >
               <h3>3</h3>
             </div>
             <div
-              className={`number ${activeHour == 4 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 4 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(4)}
               style={{ bottom: '44px', right: '12.5px' }}
             >
               <h3>4</h3>
             </div>
             <div
-              className={`number ${activeHour == 5 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 5 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(5)}
               style={{ bottom: '12.5px', right: '44px' }}
             >
               <h3>5</h3>
             </div>
             <div
-              className={`number ${activeHour == 6 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 6 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(6)}
               style={{ bottom: '0px', left: '90px' }}
             >
@@ -109,42 +109,42 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
 
             <div
-              className={`number ${activeHour == 7 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 7 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(7)}
               style={{ bottom: '12.5px', left: '44px' }}
             >
               <h3>7</h3>
             </div>
             <div
-              className={`number ${activeHour == 8 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 8 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(8)}
               style={{ bottom: '44px', left: '12.5px' }}
             >
               <h3>8</h3>
             </div>
             <div
-              className={`number ${activeHour == 9 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 9 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(9)}
               style={{ bottom: '90px', left: '0px' }}
             >
               <h3>9</h3>
             </div>
             <div
-              className={`number ${activeHour == 10 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 10 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(10)}
               style={{ top: '44px', left: '12.5px' }}
             >
               <h3>10</h3>
             </div>
             <div
-              className={`number ${activeHour == 11 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 11 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(11)}
               style={{ top: '12.5px', left: '44px' }}
             >
               <h3>11</h3>
             </div>
             <div
-              className={`number ${activeHour == 12 ? 'activeTime' : ''}`}
+              className={`number ${activeHour === 12 ? 'activeTime' : ''}`}
               onClick={() => setActiveHour(12)}
               style={{ top: '0', left: 'calc(100px - 12.5px)' }}
             >
@@ -152,7 +152,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
             <div
               className={`number nLittle ${
-                activeHour == 13 ? 'activeTime' : ''
+                activeHour === 13 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(13)}
               style={{ top: '41px', right: '60px' }}
@@ -161,7 +161,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
             <div
               className={`number nLittle ${
-                activeHour == 14 ? 'activeTime' : ''
+                activeHour === 14 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(14)}
               style={{ top: '60px', right: '41px' }}
@@ -170,7 +170,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
             <div
               className={`number nLittle ${
-                activeHour == 15 ? 'activeTime' : ''
+                activeHour === 15 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(15)}
               style={{ bottom: '90px', right: '30px' }}
@@ -179,7 +179,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
             <div
               className={`number nLittle ${
-                activeHour == 16 ? 'activeTime' : ''
+                activeHour === 16 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(16)}
               style={{ bottom: '60px', right: '41px' }}
@@ -188,7 +188,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
             <div
               className={`number nLittle ${
-                activeHour == 17 ? 'activeTime' : ''
+                activeHour === 17 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(17)}
               style={{ bottom: '41px', right: '60px' }}
@@ -198,7 +198,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
 
             <div
               className={`number nLittle ${
-                activeHour == 18 ? 'activeTime' : ''
+                activeHour === 18 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(18)}
               style={{ bottom: '30px', left: '90px' }}
@@ -208,7 +208,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
 
             <div
               className={`number nLittle ${
-                activeHour == 19 ? 'activeTime' : ''
+                activeHour === 19 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(19)}
               style={{ bottom: '41px', left: '60px' }}
@@ -218,7 +218,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
 
             <div
               className={`number nLittle ${
-                activeHour == 20 ? 'activeTime' : ''
+                activeHour === 20 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(20)}
               style={{ bottom: '60px', left: '41px' }}
@@ -227,7 +227,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
             <div
               className={`number nLittle ${
-                activeHour == 21 ? 'activeTime' : ''
+                activeHour === 21 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(21)}
               style={{ bottom: '90px', left: '30px' }}
@@ -237,7 +237,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
 
             <div
               className={`number nLittle ${
-                activeHour == 22 ? 'activeTime' : ''
+                activeHour === 22 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(22)}
               style={{ top: '60px', left: '41px' }}
@@ -247,7 +247,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
 
             <div
               className={`number nLittle ${
-                activeHour == 23 ? 'activeTime' : ''
+                activeHour === 23 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(23)}
               style={{ top: '41px', left: '60px' }}
@@ -256,7 +256,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
             <div
               className={`number nLittle ${
-                activeHour == 0 ? 'activeTime' : ''
+                activeHour === 0 ? 'activeTime' : ''
               }`}
               onClick={() => setActiveHour(0)}
               style={{ top: '30px', left: 'calc(100px - 12.5px)' }}
@@ -268,7 +268,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
           : (
           <div className="minute">
             <div
-              className={`number ${activeMinute == 5 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 5 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(5)}
               style={{ top: '12.5px', right: '44px' }}
             >
@@ -276,7 +276,7 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
 
             <div
-              className={`number ${activeMinute == 10 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 10 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(10)}
               style={{ top: '44px', right: '12.5px' }}
             >
@@ -284,28 +284,28 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
 
             <div
-              className={`number ${activeMinute == 15 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 15 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(15)}
               style={{ bottom: '90px', right: '0px' }}
             >
               <h3>15</h3>
             </div>
             <div
-              className={`number ${activeMinute == 20 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 20 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(20)}
               style={{ bottom: '44px', right: '12.5px' }}
             >
               <h3>20</h3>
             </div>
             <div
-              className={`number ${activeMinute == 25 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 25 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(25)}
               style={{ bottom: '12.5px', right: '44px' }}
             >
               <h3>25</h3>
             </div>
             <div
-              className={`number ${activeMinute == 30 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 30 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(30)}
               style={{ bottom: '0px', left: '90px' }}
             >
@@ -313,42 +313,42 @@ export default function TimePicker ({ onSubmit, onClose = () => {} }) {
             </div>
 
             <div
-              className={`number ${activeMinute == 35 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 35 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(35)}
               style={{ bottom: '12.5px', left: '44px' }}
             >
               <h3>35</h3>
             </div>
             <div
-              className={`number ${activeMinute == 40 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 40 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(40)}
               style={{ bottom: '44px', left: '12.5px' }}
             >
               <h3>40</h3>
             </div>
             <div
-              className={`number ${activeMinute == 45 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 45 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(45)}
               style={{ bottom: '90px', left: '0px' }}
             >
               <h3>45</h3>
             </div>
             <div
-              className={`number ${activeMinute == 50 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 50 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(50)}
               style={{ top: '44px', left: '12.5px' }}
             >
               <h3>50</h3>
             </div>
             <div
-              className={`number ${activeMinute == 55 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 55 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(55)}
               style={{ top: '12.5px', left: '44px' }}
             >
               <h3>55</h3>
             </div>
             <div
-              className={`number ${activeMinute == 0 ? 'activeTime' : ''}`}
+              className={`number ${activeMinute === 0 ? 'activeTime' : ''}`}
               onClick={() => setActiveMinute(0)}
               style={{ top: '0', left: 'calc(100px - 12.5px)' }}
             >

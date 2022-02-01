@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,9 +39,14 @@ export default function AddActivity () {
     difficulty: '1',
     IDs: []
   });
-  useEffect(async () => {
-    await dispatch(getCountries());
-  }, []);
+  const onMount=useCallback(() => {
+    return dispatch(getCountries());
+  }, [dispatch]);
+  
+  useEffect(() => {
+    onMount()
+  }, [onMount]);
+
   useEffect(() => {
     if (pais) {
       setInput({

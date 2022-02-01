@@ -8,8 +8,8 @@ import {
 import Country from './components/Country/Country'
 import Pagination from './components/Interactive/Pagination/Pagination'
 import Nav from './components/Nav/Nav'
-import './Home.css'
 import Loading from './components/Loading/Loading'
+import './Home.css'
 
 const perPage = 10
 

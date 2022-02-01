@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable camelcase */
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 
 import arrow from '../../../assets/icons/arrow.svg';
-import Select from '../Select/Select';
 import './Pagination.css';
 
 export default function Pagination ({ content, per_page }) {
@@ -17,9 +16,12 @@ export default function Pagination ({ content, per_page }) {
     pageRef.current = e
     _setPage(e)
   }
-
+  useEffect(()=>{
+    console.log("CONTENT:",content.length)
+  },[content])
   useEffect(() => {
     swipe()
+    console.log("ONLY IN MOUNT")
   }, [])
   useEffect(() => {
     setPage(0)
@@ -102,15 +104,7 @@ export default function Pagination ({ content, per_page }) {
           }
           )
 
-        : <Select opt={
-          Array.apply(null, { length: Math.ceil(content.length / per_page) })
-            .map((e, i) => i)
-          }
-          onSelect={(e) => {
-            setActive(e);
-            setPage(e * per_page);
-          }}
-            />
+        : null
           }
         </div>
       {!isLearn && isMobile
