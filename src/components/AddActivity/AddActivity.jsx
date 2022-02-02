@@ -93,6 +93,10 @@ export default function AddActivity () {
     if (input.name.trim() === '') {
       errores.name = 'No puede estar vacio';
     }
+    console.log(/[¡!¿?'"#$%&/()=¨[\]{}<>^+~*´]/.test(input.name))
+    if(/[¡!¿?'"#$%&/()=¨[\]{}<>^+~*´]/.test(input.name.trim())){
+      errores.name="No puede contener caracteres especiales"
+    }
     return errores;
   }
   const handleInputChange = (e) => {
@@ -151,6 +155,7 @@ export default function AddActivity () {
             name="name"
             value={input.name}
             onChange={handleInputChange}
+            autoComplete='off'
           />
           {errors.name && <Error e={errors.name}></Error>}
         </div>
