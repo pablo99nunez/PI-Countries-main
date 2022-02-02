@@ -2,7 +2,7 @@ const { Router } = require('express');
 const {conn,Country,Activity,User} =require("../db")
 const {Op} = require("sequelize")
 const axios=require("axios").default;
-const path = require('path')
+const nodemailer = require("nodemailer")
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -170,6 +170,32 @@ router.get("/activity",async(req,res)=>{
     const actividades=await Activity.findAll({})
     res.json(actividades.map(e=>e.name))
     
+})
+
+router.post("/sendEmail",async(req,res)=>{
+    const {subject,name,msj,email} =req.body
+    try {
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true, // true for 465, false for other ports
+            auth: {
+              user: "thefireskids@gmail.com", // generated ethereal user
+              pass: process.env.GMAIL_PASSWORD, // generated ethereal password
+            },
+          });
+        transporter.verify().then(()=>console.log("Listo para enviar emails"))
+
+        await transporter.sendMail({
+            from: `"${name}" <thefireskids@gmail.com>`, // sender address
+            to: "pablo99nunez@gmail.com", // list of receivers
+            subject:`Patriam Contact - ${subject}`, // Subject line
+            text: msj+"\nRespond to: "+email, // plain text body
+          });
+        res.sendStatus(200)
+    } catch (error) {
+        res.sendStatus(400).json({message:"Algo fallo: "+error})
+    }
 })
 
 
