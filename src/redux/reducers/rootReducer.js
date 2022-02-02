@@ -48,7 +48,6 @@ export default function rootReducer (state = initialState, action) {
               return -1
             } else return 1
           })
-
       };
     }
     case FILTER_COUNTRIES: {

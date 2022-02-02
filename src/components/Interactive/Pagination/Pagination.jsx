@@ -12,52 +12,62 @@ export default function Pagination ({ content, per_page }) {
   const [isMobile, setMobile] = useState(false);
   const pageRef = useRef(page)
   const pagination = useRef(null)
+  const eventListeners=useRef(null)
   const setPage = (e) => {
     pageRef.current = e
     _setPage(e)
   }
-  useEffect(()=>{
-    console.log("CONTENT:",content.length)
-  },[content])
-  useEffect(() => {
-    swipe()
-    console.log("ONLY IN MOUNT")
-  }, [])
-  useEffect(() => {
-    setPage(0)
-    setActive(0)
-  }, [content])
 
-  function swipe () {
+
+  
+  const swipe =useCallback(() =>{
     let startX; let startY; const offsetX = 50; const offsetY = 50; let endX; let endY
     if (window.visualViewport.width <= 1000) {
       setMobile(true)
-      pagination.current.addEventListener('touchstart', e => {
+      
+      const handleStart=e => {
         startX = e.touches[0].clientX
         startY = e.touches[0].clientY
-      })
-      pagination.current.addEventListener('touchmove', e => {
+      }
+      const handleMove=e => {
         endX = e.touches[0].clientX
         endY = e.touches[0].clientY
-      })
-      pagination.current.addEventListener('touchend', (e) => {
+      }
+      const handleEnd=(e) => {
         if (endX < startX - offsetX && endY < startY + offsetY && endY > startY - offsetY) {
           console.log(pageRef.current,content.length-per_page)
-          if (pageRef.current < content.length - per_page) {
+          if (pageRef.current < content.length - per_page) { //RIGHT
             setLearn(true)
             setActive(active + 1)
             setPage(pageRef.current + per_page)
           }
         } else if (endY > startX - offsetX && endY < startY + offsetY && endY > startY - offsetY) {
-          if (pageRef.current >= per_page) {
+          if (pageRef.current >= per_page) { //LEFT
             setLearn(true)
             setActive(active - 1)
             setPage(pageRef.current - per_page)
           }
         }
-      })
+      }
+      pagination.current.addEventListener('touchstart',handleStart )
+      pagination.current.addEventListener('touchmove', handleMove)
+      pagination.current.addEventListener('touchend', handleEnd)
+      return [handleStart,handleMove,handleEnd]
     }
-  }
+  },[content])
+
+  useEffect(() => {
+    console.log("CONTENT:",content.length)
+    if(eventListeners.current){
+
+      pagination.current.removeEventListener('touchstart',eventListeners.current[0],false)
+      pagination.current.removeEventListener('touchmove',eventListeners.current[1],false)
+      pagination.current.removeEventListener('touchend',eventListeners.current[2],false)
+    }
+    eventListeners.current=swipe()
+    setPage(0)
+    setActive(0)
+  }, [content,swipe])
   return (
     <div className="pagination" ref={pagination}>
       <div
