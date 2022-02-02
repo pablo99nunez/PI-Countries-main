@@ -173,28 +173,32 @@ router.get("/activity",async(req,res)=>{
 })
 
 router.post("/sendEmail",async(req,res)=>{
-    const {subject,name,msj,email} =req.body
     try {
-        let transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
+        const {subject,name,msj,email} =req.body 
+        console.log(req.body)
+        if(subject&&name&&msj&&email){
+
+            let transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
             port: 465,
             secure: true, // true for 465, false for other ports
             auth: {
-              user: "thefireskids@gmail.com", // generated ethereal user
-              pass: process.env.GMAIL_PASSWORD, // generated ethereal password
+                user: "thefireskids@gmail.com", // generated ethereal user
+                pass: process.env.GMAIL_PASSWORD, // generated ethereal password
             },
           });
-        transporter.verify().then(()=>console.log("Listo para enviar emails"))
-
-        await transporter.sendMail({
-            from: `"${name}" <thefireskids@gmail.com>`, // sender address
-            to: "pablo99nunez@gmail.com", // list of receivers
-            subject:`Patriam Contact - ${subject}`, // Subject line
-            text: msj+"\nRespond to: "+email, // plain text body
-          });
-        res.sendStatus(200)
+          transporter.verify().then(()=>console.log("Listo para enviar emails")).catch((e)=>console.log("No se pudo conectar"))
+          
+          await transporter.sendMail({
+              from: `"${name}" <thefireskids@gmail.com>`, // sender address
+              to: "pablo99nunez@gmail.com", // list of receivers
+              subject:`Patriam Contact - ${subject}`, // Subject line
+              text: msj+"\nRespond to: "+email, // plain text body
+            });
+            return res.sendStatus(200)
+        }else return res.status(406).json({error:"No puede estar vacio"})
     } catch (error) {
-        res.sendStatus(400).json({message:"Algo fallo: "+error})
+        res.status(400).json({error:"Algo fallo: "+error})
     }
 })
 
