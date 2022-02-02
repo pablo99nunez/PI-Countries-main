@@ -9,7 +9,9 @@ import Country from './components/Country/Country'
 import Pagination from './components/Interactive/Pagination/Pagination'
 import Nav from './components/Nav/Nav'
 import Loading from './components/Loading/Loading'
+import Footer from './components/Footer/Footer'
 import './Home.css'
+
 
 const perPage = 10
 
@@ -48,14 +50,17 @@ export default function Home () {
             )
           : results[0]
             ? (
+              <>
           <Pagination
             content={results.map((e) => {
               return <Country key={e.id} id={e.id}></Country>
             })}
             per_page={perPage}
-          ></Pagination>
+            ></Pagination>
+            </>
               )
             : (
+            <>
           <h1
             style={{
               color: 'white',
@@ -63,12 +68,14 @@ export default function Home () {
               width: '100%',
               textAlign: 'center'
             }}
-          >
+            >
             No hay resultados
           </h1>
+            </> 
               )
-
-          }
+              
+            }
+            <Footer/>
       </div>
     </div>
   )

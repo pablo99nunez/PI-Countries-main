@@ -1,0 +1,15 @@
+.containerForm{
+    display:grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+
+.contactForm{
+    padding:1rem;
+    gap:1rem;
+    display:flex;
+    background: #000;
+    color:white;
+    flex-direction: column;
+}

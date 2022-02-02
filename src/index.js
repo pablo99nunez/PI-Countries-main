@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Test from './Test';
 import App from './App';
 import Home from './Home'
+import Contact from './components/Contact/Contact';
 import AddActivity from './components/AddActivity/AddActivity';
 import CountryDetail from './components/CountryDetail/CountryDetail';
 import ErrorPage from './components/404/ErrorPage';
@@ -25,6 +26,7 @@ ReactDOM.render(
           </Route>
           <Route path="/paises/:id" element={<CountryDetail />}/>
           <Route path="/test" element={<Test />}/>
+          <Route path="/Contact" element={<Contact/>}/>
           <Route path={'*'} element={<ErrorPage/>} status={404}></Route>
 
         </Routes>
