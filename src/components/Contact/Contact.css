@@ -12,4 +12,49 @@
     background: #000;
     color:white;
     flex-direction: column;
+    width: 40%;
+    margin-top: 1.5rem;
+}
+.contactForm input{
+    padding:.3rem;
+    border:none;
+    border-radius:20px;
+    font-size: 1.2em;
+    padding-left: 1rem;
+}
+.contactForm textarea{
+    border:none;
+    font-size:1.2em;
+    resize: none;
+    font-family: 'Playfair Display',sans-serif;
+    border-radius: 20px;
+    padding: 1rem;
+    aspect-ratio: 1/.2;
+}
+.contactForm textarea:focus{
+    border:none;
+    outline:none
+}
+.contactForm button{
+    padding:.8rem;
+    margin:.5rem;
+    background-color: #5959ee;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border:none;
+    color:white;
+    cursor:pointer;
+    transition: .3s;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.8);
+}
+.contactForm button:hover{
+    filter:saturate(3);
+    
+}
+
+
+@media (max-width:1000px){
+    .contactForm{
+        width: 95%;
+    }
 }

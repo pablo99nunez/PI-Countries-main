@@ -75,7 +75,7 @@ export default function Home () {
               )
               
             }
-            <Footer/>
+            {!isLoading && <Footer/>}
       </div>
     </div>
   )

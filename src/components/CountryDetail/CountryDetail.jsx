@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { getCountries, getCountry } from "../../redux/actions/countryAction";
+import {  getCountry } from "../../redux/actions/countryAction";
 import "./CountryDetail.css";
 import Density from "../Density/Density";
 import { Link } from "react-router-dom";

@@ -18,7 +18,7 @@ footer img{
     object-fit: cover;
     aspect-ratio: 1/1;
 }
-@media (min-height:1000){
+@media (max-width:1000px){
     footer{
         bottom:-8vh
     }
