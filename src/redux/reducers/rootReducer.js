@@ -15,7 +15,7 @@ const initialState = {
   results: [],
   activities: [],
   error: null,
-  APIenabled: false,
+  APIenabled: true,
   isLog: false,
   user: {}
 };
